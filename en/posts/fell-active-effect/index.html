@@ -46,7 +46,7 @@
 <link rel=icon type=image/png sizes=16x16 href=/favicon/favicon-16x16.png>
 <meta name=msapplication-TileColor content="#ffffff">
 <meta name=msapplication-TileImage content="/ms-icon-144x144.png">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebPage","headline":"Active Effect for Piercing Blow","datePublished":"2022-01-10T11:42:13+01:00","dateModified":"2022-01-10T11:42:13+01:00","url":"https://outme.hervedarritchon.fr/en/posts/fell-active-effect/","description":"In lots of systems, having an item (magical or not) can modify the characteristics of an Hero or a Adversary. In Foundry VTT, it is possiblle to have this automation …","keywords":["tor2e-system","tutorials","tipsntricks"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://outme.hervedarritchon.fr"},"publisher":{"@type":"Organization","name":"Outme Blog","url":"https://outme.hervedarritchon.fr"}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebPage","headline":"Active Effect for Piercing Blow","datePublished":"2022-01-10T11:42:13+01:00","dateModified":"2022-01-10T11:42:13+01:00","url":"https://outme.hervedarritchon.fr/en/posts/fell-active-effect/","description":"Lots of systems, having an item (magical or not) can modify the characteristics of a Hero or an Adversary. In Foundry VTT, it is possible to have this automation using …","keywords":["tor2e-system","tutorials","tipsntricks"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://outme.hervedarritchon.fr"},"publisher":{"@type":"Organization","name":"Outme Blog","url":"https://outme.hervedarritchon.fr"}}</script>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-214081111-2','auto'),ga('send','pageview'))</script>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-214081111-2','auto'),ga('send','pageview'))</script>
 <script async src=https://www.google-analytics.com/analytics.js></script>
@@ -199,32 +199,36 @@ kimbie
 </ul>
 </div>
 <article class=single__contents data-dir=ltr data-ani=true>
-<p>In lots of systems, having an item (magical or not) can modify the characteristics of an Hero or a Adversary. In Foundry VTT, it is possiblle to have this automation using Active Effect. In this article I will show you how to implement a way to automate the modification of the Piercing Blow modification of a Fell Weapon (Reward).<br>
+<p>Lots of systems, having an item (magical or not) can modify the characteristics of a Hero or an Adversary. In Foundry VTT, it is possible to have this automation using Active Effect. In this article I will show you how to automate the modification of the Piercing Blow modification using a Fell Weapon (Reward).<br>
 I will tell you how to do it, how it is working and also what is the limitation (TOR2e system).</p>
 <h2 id=standard-weapon-attack>Attacking with a standard simple weapon</h2>
-<p>With this weapon, no active effect, you can see that the piercing blow threshold is 10 (which is the standard value). No modification at all.</p>
+<p>With this weapon, no active effect, you can see that the piercing blow threshold is 10 (which is the standard value). No modification at all whatsoever.</p>
 <div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden>
 <iframe src="https://www.youtube.com/embed/eWvb6psgYDk?start=0&end=39" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="Standard Piercing blow with a simple spear, no active effect."></iframe>
 </div>
 <p>With a standard weapon equipped, the system will try to beat 10 on the feat die to trigger a piercing blow.</p>
 <h2 id=fell-weapon-attack>Attacking with a fell weapon</h2>
-<p>A fell weapon (one of the reward availlable to player), this weapon has a special capacity, it triggers a piercing blow on a 9+ (9, 10 and Galdalf Rune for Character and Sauron Eye for Adversary).</p>
+<p>A fell weapon (one of the reward available to player in the Core Rules), this weapon has a special capacity, it triggers a piercing blow on a 9+ (9, 10 and Gandalf Rune for Character and Sauron Eye for Adversary) instead of 10.</p>
 <div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden>
 <iframe src="https://www.youtube.com/embed/eWvb6psgYDk?start=40&end=124" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="Piercing blow with a fell spear, one active effect."></iframe>
 </div>
-<p>With a fell weapon equipped (a weapn with an active effect Fell), the system will try to beat 9 on the feat die to trigger a piercing blow.</p>
+<p>With a fell weapon equipped (a weapon with an active effect Fell), the system will try to beat 9 on the feat die to trigger a piercing blow.</p>
+<p>But &mldr; How to create such Active Effect in Tor2e ? (please read next paragraph).</p>
 <h2 id=fell-active-effect>How to create a Fell Active Effect</h2>
-<p>In the video below, you can see how to create such active effect but before, you <strong>have to know</strong> things about active effect and Foundry VTT.</p>
+<p>In the video below, you can see how to create such active effect but before, you <strong>have to know</strong> a few things about active effect and Foundry VTT.</p>
 <h3 id=note>Note</h3>
-<p>First, you have to add the active effect on an item in the <strong>Item Sidebar</strong>, you can&rsquo;t modify an active effect in an item embedded in an actor (actor is the FVTT term for characters, adversaries, npcs, &mldr;).<br>
-Please notice, active effect are not items you can drag&rsquo;n drop on an item/actor, you need to add it using the active effect tab in an item sheet.</p>
+<p>First of all, you have to add the active effect on an item in the <strong>Item Sidebar</strong>, you can&rsquo;t modify an active effect in an item embedded in an actor (actor is the FVTT term for characters, adversaries, npcs, &mldr;).<br>
+Secondly, please notice, active effect are not items you can drag&rsquo;n drop on an item/actor, you need to add it using the active effect tab in an item sheet.</p>
 <h3 id=add-an-active-effect-to-the-item>Add an active effect to the item</h3>
-<p>So to add an active effect, you need to go to open the item sheet, you want to modify, then you go to the active effect tab. In the active effect tab, you have to click on the &ldquo;+&rdquo; on the sheet. A customization popup appears on the screen to setup the active effect data.</p>
+<p>So to add an active effect, you need to go to the sidebar and open the item sheet you want to modify, then you go to the active effect tab in the sheet. In the active effect tab, you have to click on the <strong>"+"</strong> on the sheet.<br>
+A customization popup appears on the screen to set up the active effect data. You will have to fill some of the fields to make it work !</p>
 <h4 id=important>Important</h4>
-<p>To have an active effect active in your sheet, you need to unchecked the <strong>&ldquo;Effect Suspended&rdquo;</strong> checkbox. if you forget to uncheck this checkbox, tha active effect will have <strong>NO EFFECT</strong> in your actor !<br>
-This is mainly the source of error and mistake when you create your active effect. You forget to modify the checkbox so it is doing nothing !</p>
+<p>To have an active effect active in your sheet, you need to uncheck the <strong>&ldquo;Effect Suspended&rdquo;</strong> checkbox. If you forget to uncheck this checkbox, that active effect will have <strong>NO EFFECT</strong> in your actor !<br>
+In fact, this checkbox is used by FVTT to know the effect should be suspended (so not active) or if it should be actve (this is what we want).
+This is <strong>mainly the source of error and mistake</strong> when you create your active effect, it is not working.<br>
+Often You forgot to modify the checkbox so it is doing nothing !</p>
 <h3 id=create-an-effect-in-the-active-effect>Create an effect in the Active Effect</h3>
-<p>Once, the item has an active effect and this active effect is not suspended (so it is active), you need to create an effect. To do so, go to the <strong>Effects</strong> tab and add an effect. The effect has some data to specify (Attribute Key to modify, Methode of modification and Value).</p>
+<p>Once, the item has an active effect and this active effect is not suspended (so it is active), you need to create an effect. To do so, go to the <strong>Effects</strong> tab and add an effect using <strong>"+"</strong> icon. The effect has some data to specify (Attribute Key to modify, Method of modification and Value).</p>
 <p>For our Fell Active Effect purpose, you need to choose :</p>
 <ul>
 <li>Attribute Key &ndash;> Weapon Piercing Blow</li>
@@ -234,15 +238,16 @@ This is mainly the source of error and mistake when you create your active effec
 <div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden>
 <iframe src="https://www.youtube.com/embed/eWvb6psgYDk?start=52&end=73" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="Creating a Fell Active Effect."></iframe>
 </div>
+<p>Now if you test, you should have the expected result, triggering a piercing blow on 9. But if you look closely, you can see a little issue (see below for explanation).</p>
 <h2 id=current-tor2e-system-limitations>Current Tor2e System limitations</h2>
-<p>If you look at the video until the end, you will notice that if you have an item with a Fell active effect, even if you don&rsquo;t attack with the weapon or you even don&rsquo;t have the item equipped, the piercing blow threshold is downgrade to 9 which is wrong ! The system shouldn&rsquo;t modify the piercing blow threshold.<br>
+<p>If you look at the video until the end, you will notice that if you have an item with a Fell active effect, even if you don&rsquo;t attack with the weapon, or you even don&rsquo;t have the item equipped, the piercing blow threshold is downgrade to 9 which is wrong ! The system shouldn&rsquo;t modify the piercing blow threshold.<br>
 I have a solution to do it correctly, but I haven&rsquo;t coded it yet so &mldr; for now, you need to modify the sheet, deleting the item or keep in mind and compute the proper value of the threshold in your head.</p>
 <div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden>
 <iframe src="https://www.youtube.com/embed/GQ88-2Yo-v0?start=133" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="Fell Active Effect Limitations"></iframe>
 </div>
 <h2 id=skill-value-modification>Conclusion</h2>
-<p>To create a Fell Active Effect, you have to keep in mind [how to do it correctly](#fell-active-effec and to know some of the [limitations](#navigating-between-input-fields of the system.<br>
-Walking through the active system attribute key list, you notice there is some attribute you can change and I also will add new later on. You can play with all the attributes but keep in mind it is a WIP feature that will evolve and it is not perfect.</p>
+<p>To create a Fell Active Effect, you have to keep in mind [how to do it correctly](#fell-active-effec and to know some [limitations](#navigating-between-input-fields of the system.<br>
+Walking through the active system attribute key list, you notice there is some attribute you can change, I also will add new later on. You can play with all the attributes but keep in mind it is a WIP feature that will evolve and it is not perfect.</p>
 </article>
 <script defer src=/js/clipboard.min.1626706afc88d95ebe1173b553ec732c6dc82a576989315fdf5e7779af738a44.js></script>
 <script defer src=/js/helper/prev.min.js></script>
