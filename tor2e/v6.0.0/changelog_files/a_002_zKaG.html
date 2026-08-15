@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- frame-runtime --><!-- base href="https://85db8f21-2c33-43e0-bfdb-d22622af60da.frame.claudeusercontent.com/_f/1786785028-08e8/" --><script>window.__FRAME_PREAMBLE={"capabilities":{"artifact":"artifact.BWD0CGLd.js","assets":"assets.a_mJ8q_Q.js","comments":"comments.DGBrvfFR.js","db":"db.VpIrzqr_.js","downloads":"downloads.BXsoAvg9.js","mcp":"mcp.D3B2EyQu.js","permissions":"permissions.BNySkLV5.js","room":"room.BgXZkiYR.js","sample":"sample.kXGC3wc0.js","self":"artifact.BWD0CGLd.js","user":"user.CGub7vEP.js"},"transforms":"_transforms.BI3gXbbT.js","comments":"_comments.hMHmCz0l.js","translate":"_translate.3AdCy0Ua.js"}</script><script>(function(){"use strict";var ce=["light","dark","system"],ue=/^[A-Za-z0-9_-]{1,64}$/,V=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,fe=new Set(["class","hidden","value","checked"]);function de(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||fe.has(t)}var pe="http://www.w3.org/1999/xhtml",me="http://www.w3.org/2000/svg",ge=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),_e=new Set(["script","style"]);function ve(e){const t=e.localName.toLowerCase();return e.namespaceURI===pe?!ge.has(t):e.namespaceURI===me?!_e.has(t):!1}function he(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_patch;if(t===null||typeof t!="object")return!1;const{seq:n,elements:a}=t;if(typeof n!="number"||!Number.isSafeInteger(n)||!Array.isArray(a)||a.length===0||a.length>64)return!1;for(const i of a){if(i===null||typeof i!="object")return!1;const r=i;if(typeof r.target!="string"||!ue.test(r.target)||r.text!==void 0&&typeof r.text!="string")return!1;if(r.attrsSet!==void 0){if(r.attrsSet===null||typeof r.attrsSet!="object")return!1;for(const[l,c]of Object.entries(r.attrsSet))if(!V.test(l)||typeof c!="string")return!1}if(r.attrsRemoved!==void 0){if(!Array.isArray(r.attrsRemoved))return!1;for(const l of r.attrsRemoved)if(typeof l!="string"||!V.test(l))return!1}}return!0}function ye(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function be(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function Ee(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&ce.includes(n)}function we(e){try{typeof reportError=="function"?reportError(e):setTimeout(()=>{throw e},0)}catch{}}var X=["#62744c","#b04e72","#5b7596","#a3651f","#7a6ba8","#3f7a75"],J=e=>{let t=0;for(let n=0;n<e.length;n++)t=t*31+e.charCodeAt(n)>>>0;return X[t%X.length]??"#788c5d"},Z="#c7c9d1",Ae=["data:image","/svg+xml,"].join(""),Q=e=>Ae+"%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Ccircle cx='1' cy='1' r='1' fill='"+encodeURIComponent(e)+"'/%3E%3C/svg%3E",Se=Object.freeze({id:null,name:"",avatarUrl:Q(Z),color:Z,email:null,isOwner:!1,canEdit:!1}),je=(...e)=>{const t=e[0],n=typeof t=="string"?[t]:Array.isArray(t)?t.filter(i=>typeof i=="string"):[],a=Object.create(null);for(const i of n)a[i]={id:i,name:"",avatarUrl:Q(J(i)),color:J(i),email:null,isMe:!1};return a},ee=Object.freeze(Object.assign(Object.create(null),{user:Object.freeze(Object.assign(Object.create(null),{id:null,isOwner:!1,canEdit:!1,me:Se,profiles:je,name:"",avatarUrl:null,search:Object.freeze([]),email:null}))})),Re={sample:"sample"};function te(){const e=new Uint8Array(20);try{crypto.getRandomValues(e)}catch{for(let n=0;n<e.length;n++)e[n]=Math.floor(Math.random()*256)}let t="";for(const n of e)t+=(n%36).toString(36);return t}function Oe(e,t){const n=r=>{const l={path:r},c=r.split("/");return{id:c[c.length-1],path:r,get:()=>t("get",[l]),set:d=>t("set",[l,d]),update:d=>t("update",[l,d]),delete:()=>t("delete",[l]),acquire:d=>t("acquire",[l,d]),onSnapshot:(d,E)=>t("subscribe",[l,d,E]),collection:d=>i(r+"/"+String(d))}},a=r=>({where:(l,c,d)=>a({...r,where:[...r.where??[],{f:String(l),op:String(c),v:d}]}),orderBy:(l,c)=>a({...r,orderBy:{f:String(l),dir:c===void 0?"asc":String(c)}}),limit:l=>a({...r,limit:Number(l)}),get:()=>t("query",[r]),onSnapshot:(l,c)=>t("subscribe",[r,l,c])}),i=r=>({...a({collection:r}),path:r,doc:l=>n(r+"/"+(l===void 0?te():String(l))),add:l=>{const c=n(r+"/"+te());return Promise.resolve(c.set(l)).then(()=>c)}});e.doc=r=>n(String(r)),e.collection=r=>i(String(r))}var Pe=Object.freeze([]);function Te(e,t){let n=null,a=null;const i=()=>e.__settled;e.peers=()=>Pe,e.connected=()=>!1,e.emit=()=>i()?.()??Promise.resolve(),e.presence=r=>{const l=i();if(l)return l();let c=null;if(r!==null&&typeof r=="object")try{Array.isArray(r)||(c={...r})}catch{}return c===null?Promise.reject({code:"invalid_argument",message:"presence takes an object"}):(n===null&&(n=Object.create(null),a=Promise.resolve(t("presence",[n]))),Object.assign(n,c),a)}}var B="__frame_scroll",Me=150,Le=310,ke=160,Ce=3e4;function Ne(){let e=0,t=!1,n=!1,a=!1,i=0,r=null;const l=u=>{try{sessionStorage.setItem(B,JSON.stringify({y:u}))}catch{}},c=()=>{if(clearTimeout(e),r===null)return;const u=r;r=null,l(u)},d=()=>{if(t){t=!1;return}n=!0,r=scrollY,clearTimeout(e),e=setTimeout(c,Me)};try{addEventListener("scroll",d,{passive:!0}),addEventListener("pagehide",c)}catch{}const E=()=>{let u;try{u=sessionStorage.getItem(B)}catch{return null}if(u===null)return null;let g;try{g=JSON.parse(u)}catch{g=null}const f=g?.y;if(!(typeof f=="number"&&Number.isFinite(f)&&f>=0)){try{sessionStorage.removeItem(B)}catch{}return null}return f};let T=!1;const h=u=>{try{const g=scrollY;scrollTo({top:u,left:0,behavior:"instant"}),i=u,a=!0,clearTimeout(e),r=null,l(u);const f=scrollY;f!==g&&(t=!0),f!==u&&!T&&(T=!0,addEventListener("load",()=>{try{if(scrollY===f){const p=E();h(p!==null?p:i)}}catch{}},{once:!0}))}catch{}},R=()=>{try{return!!location.hash}catch{return!0}};let A=!1;const O=()=>{try{if(A||innerWidth>Le||innerHeight>ke)return;A=!0;const u=Date.now(),g=()=>{try{removeEventListener("resize",g)}catch{}if(Date.now()-u>Ce||n||R())return;const f=E();h(f!==null?f:i)};addEventListener("resize",g)}catch{}};let M=!1,o=!1;return{restore(){if(M||(M=!0,R()))return;const u=E();u!==null&&(h(u),O())},promoted(){if(o||(o=!0,R()))return;const u=E();u!==null?(h(u),O()):a&&h(i)}}}var Ye="modulepreload",We=function(e){return"/"+e},Ke={},Ue=function(t,n,a){let i=Promise.resolve();function r(l){const c=new Event("vite:preloadError",{cancelable:!0});if(c.payload=l,window.dispatchEvent(c),!c.defaultPrevented)throw l}return i.then(l=>{for(const c of l||[])c.status==="rejected"&&r(c.reason);return t().catch(r)})};(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let a=0;for(let i=0;i<n.length;i++){const r=n[i];try{e(t,r,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[r]}catch{}try{e(t,r,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[r]=="function"&&a++}if(a&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:a},"*")}catch{}})();var qe=1e4,Ie=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function re(e){for(const t of Ie)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var k=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),x=window.__FRAME_PREAMBLE?.transforms,$=window.__FRAME_PREAMBLE?.comments,z=window.__FRAME_PREAMBLE?.translate,q=/^[\w.-]+\.js$/,De=/^[a-z][a-z0-9_-]{0,63}$/,I=e=>Ue(()=>import("/_runtime/"+e),void 0);function Be(e,t){return{contract:e.contract,changes:new Set(e.changes??[]),flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:new Map,shellOrigin:t,mount:Y,pipe:()=>({wrap:(n,a)=>(...i)=>{try{return a(...i)}catch(r){return Promise.reject(r)}}})}}var ne=null,C=null;function F(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var H=!1;function xe(e,t){const n=[];for(const a of e.elements){const i=document.querySelector(`[data-id="${a.target}"]`);if(!i){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if([...Object.keys(a.attrsSet??{}),...a.attrsRemoved??[]].some(r=>!de(r))){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if(a.text!==void 0&&!ve(i)){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}for(const[r,l]of Object.entries(a.attrsSet??{}))if(!oe(i,r)){try{i.setAttribute(r,l)}catch{}se(i,r,l)}for(const r of a.attrsRemoved??[])oe(i,r)||(i.removeAttribute(r),se(i,r,null));typeof a.text=="string"&&(i.textContent=a.text),n.push(a.target)}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:n}}))}catch{}}function se(e,t,n){if(!(e instanceof HTMLInputElement))return;const a=t.toLowerCase();a==="checked"?e.checked=n!==null:a==="value"&&e.type!=="file"&&(e.value=n??"")}function oe(e,t){const n=t.toLowerCase(),a=e;return n==="data-id"||(n==="value"||n==="checked")&&(a.__artifactSecret===!0||/^(password|hidden|file)$/.test(a.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${e.getAttribute("autocomplete")??""} ${a.autocomplete??""}`))}function ae(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,H=!0):H&&(delete t.dataset.theme,t.style.colorScheme="",H=!1)}var ie=256,N=Object.assign(Object.create(null),{mcp:Object.assign(Object.create(null),{watchTool:{handlerArg:3}}),db:Object.assign(Object.create(null),{subscribe:{handlerArg:1,errArg:2}}),room:Object.assign(Object.create(null),{on:{handlerArg:1,errArg:2},onPeers:{handlerArg:0,errArg:1},onConnection:{handlerArg:0,errArg:1}})}),$e=Object.assign(Object.create(null),{db:(e,t)=>Oe(e,t),room:(e,t,n)=>Te(e,n)}),j=new Map;function Y(e,t){const n=j.get(e);if(!n)return;const a=Object.assign(Object.create(null),t);Object.assign(n.impl,a),n.r(n.ns),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const i=n.queue;n.queue=[];for(const r of i){const l=a[r.method];if(l)if(N[e]?.[r.method])try{r.resolve(l(...r.args))}catch{U(r,N[e][r.method],{code:"transform_error",message:`${e}.${r.method} rejected its arguments`})}else l(...r.args).then(r.resolve,r.reject);else{const c={code:"capability_removed",message:`${e}.${r.method} is not in this runtime`},d=N[e]?.[r.method];if(d){U(r,d,c);continue}r.reject(c)}}}function ze(e,t){const n=j.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t),n.r(null);const a=n.queue;n.queue=[];for(const i of a){const r=N[e]?.[i.method];if(r){U(i,r,t);continue}i.reject(t)}}function le(e,t){if(typeof e=="function")try{return e(...t)}catch{return Object.create(null)}return Array.isArray(e)?[...e]:e!==null&&typeof e=="object"?{...e}:e}function D(e,t){const n=ee[e];if(!n){ze(e,t);return}j.get(e)?.r(null),Y(e,Object.fromEntries(Object.entries(n).map(([a,i])=>[a,(...r)=>Promise.resolve(le(i,r))])))}function U(e,t,n){if(e.syncState?.dead)return;const a=t.errArg===void 0?void 0:e.args[t.errArg],i=t.errArg===void 0?e.args[t.handlerArg]:a;typeof i=="function"&&queueMicrotask(()=>{if(!e.syncState?.dead)try{i(t.errArg===void 0?{type:"error",error:n}:n)}catch(r){we(r)}})}var W=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(W&&W.writable===!1)){const e=x&&q.test(x)?I(x).catch(()=>{}):Promise.resolve(void 0),t=o=>{if(o.type==="auxclick"&&o.button!==1)return;const u=o.target,g=u&&u.closest?u.closest("a[href],area[href]"):null;if(!g)return;const f=g.getAttribute("href");if(!f)return;let p,P;try{p=new URL(f,document.baseURI),P=new URL(document.baseURI).origin}catch{return}if((p.protocol==="http:"||p.protocol==="https:")&&p.origin!==P){o.preventDefault();const w=(g.getAttribute("target")??"").toLowerCase(),y=o.type==="auxclick"||o.metaKey||o.ctrlKey||o.shiftKey||o.altKey||!["","_self","_top","_parent"].includes(w);parent.postMessage({__frame_nav:!0,url:p.href,newTab:y},"*")}};addEventListener("click",t,!0),addEventListener("auxclick",t,!0);const n={},a=o=>{o.isTrusted&&(n.pointer=!0)},i=o=>{o.isTrusted&&(n.click=!0)};addEventListener("pointermove",a,{capture:!0,passive:!0}),addEventListener("click",i,{capture:!0,passive:!0}),e.then(o=>{o?.wireNav&&(o.wireNav(),removeEventListener("click",t,!0),removeEventListener("auxclick",t,!0),removeEventListener("pointermove",a,!0),removeEventListener("click",i,!0),o.wireEngagement?.(n))});let r=null;try{r=Ne()}catch{}const l=W?.value??{};F(window,"claude",l);const c=o=>{let u;const g=new Promise(v=>{u=v}),f={impl:Object.create(null),queue:[],u:g,r:u,ns:null};j.set(o,f);const p=f.impl,P=v=>({code:"queue_overflow",message:`${o}.${v}: pre-init call queue is full`}),w=(v,s)=>{if(f.queue.length>=ie){const m=ee[o];return m&&v in m?Promise.resolve(le(m[v],s)):Promise.reject(P(v))}return new Promise((m,_)=>{f.queue.push({method:v,args:s,resolve:m,reject:_})})},y=Re[o],L=new Proxy(y===void 0?p:(()=>{}),{apply:(v,s,m)=>{const _=y,b=p[_]??p.__settled;return b?b(...m):w(_,m)},get:(v,s)=>{if(typeof s!="string"||s==="then"||s==="toJSON"||s==="valueOf")return;if(s==="toString")return Object.prototype.toString;if(y!==void 0&&(s==="call"||s==="apply"||s==="bind"))return Function.prototype[s];const m=N[o]?.[s];return m?(..._)=>{if(typeof _[m.handlerArg]!="function")throw new TypeError(`${o}.${s} requires a handler function`);const b=p[s];if(b)return b(..._);if(p.__settled){const S={dead:!1},Fe={args:[..._],syncState:S};return p.__settled().catch(He=>U(Fe,m,He)),()=>{S.dead=!0}}if(f.queue.length>=ie){const S={dead:!1};return U({args:[..._],syncState:S},m,P(s)),()=>{S.dead=!0}}let K=null;const G={dead:!1};return f.queue.push({method:s,args:_,resolve:S=>{K=typeof S=="function"?S:null,G.dead&&K?.()},reject:()=>{},syncState:G}),()=>{G.dead=!0,K?.()}}:(..._)=>{const b=p[s]??p.__settled;return b?b(..._):w(s,_)}},set:()=>!1});$e[o]?.(p,(v,s)=>L[v](...s),w),f.ns=L,F(l,o,L)};for(const o of Object.keys(k)){if(l[o]!==void 0){F(l,o,l[o]);continue}c(o)}if(l.use===void 0){const o=u=>{if(typeof u!="string"||!Object.hasOwn(k,u))return Promise.resolve(null);const g=j.get(u);return g?g.u:Promise.resolve(l[u]??null)};try{Object.defineProperty(l,"use",{value:o,writable:!0,configurable:!0,enumerable:!1})}catch{}}let d=null,E=null,T=0;const h=o=>{o.source!==parent||!re(o.origin)||ye(o.data)&&(d=o.data.__frame_init,C=o.origin,removeEventListener("message",h),clearTimeout(T),E?.())};addEventListener("message",h),parent.postMessage({__frame_connect:!0},"*");const R=new Promise(o=>{E=o,T=setTimeout(()=>{removeEventListener("message",h),o()},qe)}),A=document.readyState==="loading"?new Promise(o=>document.addEventListener("DOMContentLoaded",()=>o(),{once:!0})):Promise.resolve();A.then(()=>{try{r?.restore()}catch{}});const O={cb:null},M=o=>{if(!(o.source!==parent||!re(o.origin))&&be(o.data)){try{r?.promoted()}catch{}O.cb?.()}};addEventListener("message",M),R.then(async()=>{if(!d||!C){for(const s of j.keys())D(s,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}ae(d.theme);const o=C;let u=!1,g=!1;addEventListener("message",s=>{if(s.source!==parent||s.origin!==o)return;Ee(s.data)&&ae(s.data.__frame_theme.theme),he(s.data)&&xe(s.data.__frame_patch,o);const m=s.data?.__fc_mode;m&&typeof m=="object"&&!u&&$&&q.test($)&&(u=!0,I($).then(b=>b.install?.(o,m.on===!0)).catch(()=>{}));const _=s.data?.__ft_cmd;_&&typeof _=="object"&&!g&&z&&q.test(z)&&(g=!0,I(z).then(b=>b.install?.(o,_)).catch(()=>{}))});const f=Object.keys(d.capabilities??{});for(const s of f)Object.hasOwn(k,s)||De.test(s)&&l[s]===void 0&&(c(s),D(s,{code:"capability_disabled",message:"capability not in this runtime generation"}));const p=f.filter(s=>Object.hasOwn(k,s)).map(s=>[s,k[s]]).filter(s=>typeof s[1]=="string"&&q.test(s[1])),P=await Promise.allSettled(p.map(([,s])=>I(s))),w=await e,y=C;w?.buildBoot||parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},y),ne=w?.buildBoot?w.buildBoot(d,w.TRANSFORMS??{},{shellOrigin:y,mount:Y},s=>parent.postMessage({__frame_cap_telemetry:s},y)):Be(d,y);const L=s=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:s}},y),v=ne;P.forEach((s,m)=>{const _=p[m][0];if(s.status!=="fulfilled"){L(_);return}try{s.value?.install?.(v)}catch{L(_)}});for(const[s,m]of j)if(m.impl.__settled===void 0){if(f.includes(s)){D(s,{code:"capability_disabled",message:"capability not available in this session"});continue}D(s,{code:"not_granted",message:"capability not available in this session"})}await A,parent.postMessage({__frame_ready:!0},C),e.then(s=>s?.installSizeReporter?.(y,O))})}})();</script><!-- /frame-runtime --><meta charset="utf8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>TOR2E v6.0.0 Changelog</title>
+<style>
+  :root {
+    --bg: #F5F0E8;
+    --surface: #FFFCF7;
+    --ink: #1C1914;
+    --ink-muted: #6B6358;
+    --gold: #8A6B2A;
+    --gold-bg: rgba(138, 107, 42, 0.10);
+    --gold-border: rgba(138, 107, 42, 0.35);
+    --danger-bg: rgba(122, 46, 26, 0.09);
+    --danger-border: #7A2E1A;
+    --danger-text: #6B2416;
+    --rule: rgba(28, 25, 20, 0.14);
+    --table-border: rgba(28, 25, 20, 0.12);
+    --code-bg: rgba(28, 25, 20, 0.06);
+    --badge-bg: #8A6B2A;
+    --badge-text: #FFFCF7;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16130E;
+      --surface: #1F1B14;
+      --ink: #E4D9C4;
+      --ink-muted: #998E7D;
+      --gold: #C4A24A;
+      --gold-bg: rgba(196, 162, 74, 0.12);
+      --gold-border: rgba(196, 162, 74, 0.35);
+      --danger-bg: rgba(196, 88, 64, 0.12);
+      --danger-border: #C45840;
+      --danger-text: #E07A60;
+      --rule: rgba(228, 217, 196, 0.12);
+      --table-border: rgba(228, 217, 196, 0.10);
+      --code-bg: rgba(228, 217, 196, 0.07);
+      --badge-bg: #C4A24A;
+      --badge-text: #16130E;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #16130E;
+    --surface: #1F1B14;
+    --ink: #E4D9C4;
+    --ink-muted: #998E7D;
+    --gold: #C4A24A;
+    --gold-bg: rgba(196, 162, 74, 0.12);
+    --gold-border: rgba(196, 162, 74, 0.35);
+    --danger-bg: rgba(196, 88, 64, 0.12);
+    --danger-border: #C45840;
+    --danger-text: #E07A60;
+    --rule: rgba(228, 217, 196, 0.12);
+    --table-border: rgba(228, 217, 196, 0.10);
+    --code-bg: rgba(228, 217, 196, 0.07);
+    --badge-bg: #C4A24A;
+    --badge-text: #16130E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 1rem 5rem;
+  }
+
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    padding: 3.5rem 0 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 2.5rem;
+  }
+
+  .doc-header .eyebrow {
+    font-family: system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .doc-header h1 {
+    font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: normal;
+    line-height: 1.15;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+
+  .doc-header h1 em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .meta-label {
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  /* ── Section divider ── */
+  .section-break {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.75rem 0 2rem;
+    color: var(--rule);
+  }
+  .section-break::before,
+  .section-break::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  .section-break span {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+  }
+
+  /* ── Section headings ── */
+  h2 {
+    font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: normal;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 1.75rem 0 0.65rem;
+  }
+
+  h3:first-child { margin-top: 0; }
+
+  /* ── Breaking changes ── */
+  .breaking {
+    background: var(--danger-bg);
+    border-left: 3px solid var(--danger-border);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .breaking h2 {
+    color: var(--danger-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .breaking ul { margin-left: 1.25rem; }
+
+  .breaking li {
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .breaking li strong {
+    color: var(--danger-text);
+  }
+
+  /* ── Body text ── */
+  p {
+    margin-bottom: 0.85rem;
+    color: var(--ink);
+    max-width: 66ch;
+  }
+
+  ul, ol {
+    margin-left: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  li {
+    margin-bottom: 0.3rem;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12.5px;
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--ink);
+  }
+
+  /* ── Table ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  thead tr {
+    border-top: 2px solid var(--gold-border);
+    border-bottom: 1px solid var(--table-border);
+  }
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.5rem 0.75rem;
+  }
+
+  td {
+    padding: 0.5rem 0.75rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--table-border);
+    vertical-align: top;
+  }
+
+  td code {
+    font-size: 12px;
+  }
+
+  /* ── Section grouping ── */
+  .section {
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Internal rule for sub-sections ── */
+  .inner-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1.5rem 0;
+  }
+</style>
+
+<div class="page">
+  <header class="doc-header">
+    <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT System</div>
+    <h1>Changelog <em>v6.0.0</em></h1>
+    <div class="meta-row">
+      <span class="badge">v6.0.0</span>
+      <span class="meta-label">Released 2026-08-15</span>
+      <span class="meta-label">·</span>
+      <span class="meta-label">Requires Foundry VTT 14+</span>
+    </div>
+  </header>
+
+  <div class="section">
+    <div class="breaking">
+      <h2>⚠ Breaking Changes</h2>
+      <ul>
+        <li><strong>Foundry VTT v14 is now the minimum supported version.</strong> v13 and earlier are no longer supported. Do not install this release without upgrading Foundry first.</li>
+        <li><strong>All AppV1 actor and item sheets have been removed.</strong> No legacy fallback is provided. If a sheet customisation relied on AppV1 classes, it will need to be updated.</li>
+        <li><strong>A world migration runs automatically on first load.</strong> It normalises all actor and item data to the new TypeDataModel schemas. Back up your world before upgrading.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Actor Sheets — Full ApplicationV2 Migration</h2>
+    <p>All remaining actor types are now fully migrated to Foundry's 
+ApplicationV2 engine. Every actor sheet follows the same layout 
+contract: persistent sidebar, vertical icon tab rail, multi-PARTS or 
+mono-PART structure as appropriate.</p>
+    <ul>
+      <li><strong>NPC actor</strong> — new TypeDataModel schema + ApplicationV2 sheet with sidebar/body layout; default window width widened</li>
+      <li><strong>Lore actor</strong> — new TypeDataModel schema + 
+ApplicationV2 sheet aligned with character sheet styling; watermark 
+centered on main content column</li>
+      <li><strong>Community actor</strong> — new TypeDataModel schema + ApplicationV2 sheet (see Community section below)</li>
+      <li><strong>Adversary actor</strong> — new TypeDataModel schema + ApplicationV2 sheet (see Adversary section below)</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Item Sheets — Full ApplicationV2 Migration</h2>
+    <p>Every item type now uses ApplicationV2. The base class <code>Tor2eItemSheetV2</code> defines shared behaviour; sub-classes handle per-type layout.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sheet class</th>
+            <th>Item types covered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>Tor2eSimpleItemSheetV2</code></td><td>trait, song, mount, combat-task, fell-ability, skill</td></tr>
+          <tr><td><code>Tor2eEffectEnabledItemSheetV2</code></td><td>weapon, miscellaneous, virtues — tabs: details / effects</td></tr>
+          <tr><td><code>Tor2eArmourSheetV2</code></td><td>armour</td></tr>
+          <tr><td><code>Tor2eStandingSheetV2</code></td><td>standing</td></tr>
+          <tr><td><code>Tor2eRewardSheetV2</code></td><td>reward</td></tr>
+          <tr><td><code>Tor2eJourneyLogSheetV2</code></td><td>journey-log — multi-PARTS, right sidebar, collapsible sections</td></tr>
+          <tr><td><code>Tor2eUndertakingSheetV2</code></td><td>undertaking</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Journey Log sheet refactored to a main + full-height right sidebar grid. Collapsible cards now use native <code>&lt;details&gt;/&lt;summary&gt;</code>. Company and mounts tables use CSS grid.</p>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Data Architecture</h2>
+    <ul>
+      <li><strong>TypeDataModel</strong> adopted for all item types 
+(trait, song, mount, combat-task, fell-ability, skill, weapon, 
+miscellaneous, virtues, armour, standing, reward, journey-log, 
+undertaking)</li>
+      <li>TypeDataModel adopted for all remaining actor types: NPC, Lore, Community, Adversary</li>
+      <li><code>'lore'</code> type removed from <code>template.json</code>; item template schema removed entirely</li>
+      <li>World migration: item TypeDataModel normalisation</li>
+      <li>World migration: character history schema normalisation</li>
+      <li>Active Effects auto-transfer enabled for remaining item families</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Character Sheet Enhancements</h2>
+
+    <h3>Sidebar</h3>
+    <ul>
+      <li>Diamond-shaped Endurance and Hope inputs with arrow-key support, tooltips, and value validation against maximum</li>
+      <li>Load and Shadow editable with total badges; progress bars show threshold indicator (inverted colours at limit)</li>
+      <li>Heroic Stature ribbon (Valour / Wisdom) with hover-revealed labels and effects overlay</li>
+      <li>Rest actions section</li>
+      <li>Shadow taint tracker</li>
+      <li>Daunted condition indicator</li>
+      <li>Character's affiliated communities displayed</li>
+    </ul>
+
+    <h3>Tabs</h3>
+    <ul>
+      <li>Vertical icon tab rail with localized labels</li>
+      <li>Drag-and-drop support on item cards</li>
+      <li>Visual separators between tab content sections</li>
+      <li>"Capacities" section renamed to "Abilities"</li>
+      <li>Weapons and armour can again be dragged to the hotbar</li>
+      <li>Combat tab: vertical scrollbar added</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Community Sheet</h2>
+    <p>Complete rebuild as ApplicationV2 with persistent sidebar and four tabs.</p>
+
+    <h3>Sidebar</h3>
+    <ul>
+      <li>Avatar overlay with renown display; portrait editing</li>
+      <li>Auto-sized window height to fit content</li>
+    </ul>
+
+    <h3>Company tab</h3>
+    <ul>
+      <li>Fluid member avatar layout with clickable pills</li>
+      <li>Real-time player presence indicator (online/offline) with detailed tooltip</li>
+      <li>Set default community actor</li>
+      <li>Editable Eye Awareness initial value</li>
+      <li>Drag-drop character to connections list with atomic renown assignment</li>
+      <li>Patron/connection card actions made keyboard-accessible</li>
+    </ul>
+
+    <h3>Travel tab</h3>
+    <ul>
+      <li>Travel role assignment via drag-and-drop</li>
+      <li>Journey log toggle (restored)</li>
+      <li>Hints and <code>data-tooltip</code>s on member cards</li>
+      <li>Section appearance uniformised with Company tab</li>
+      <li>Guide travel role clearable</li>
+    </ul>
+
+    <h3>Overview / Chronicle</h3>
+    <ul>
+      <li>Description editable inline</li>
+      <li>Chronicle header replaced with notes block</li>
+    </ul>
+
+    <h3>Patronage</h3>
+    <ul>
+      <li>Active patron persisted and openable directly from sheet</li>
+      <li>Campaign pointer state clarified</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Adversary Sheet</h2>
+    <p>Complete rebuild as ApplicationV2 with vertical tab rail matching character and community sheet style.</p>
+
+    <h3>Sidebar</h3>
+    <ul>
+      <li>Avatar overlay displaying attribute level and Might</li>
+      <li>Endurance and Hate progress bars</li>
+      <li>Faction slider; Hate / Resolve controls</li>
+      <li>Status effects harmonised with character sidebar</li>
+      <li>Resource input validation and tooltips</li>
+      <li>Max coercion skipped on partial updates (prevented damage values being clobbered)</li>
+    </ul>
+
+    <h3>Tabs</h3>
+    <ul>
+      <li><strong>Combat</strong> — editable max Endurance and Hate diamonds; fell abilities; Faction and Hate/Resolve moved here from sidebar</li>
+      <li><strong>Abilities</strong> — distinctive features, skills with favoured toggle (delegated via <code>data-action</code>)</li>
+      <li><strong>Description</strong></li>
+      <li><strong>Equipment (War Gear)</strong> — weapons and armours with add / remove actions; miscellaneous items and mounts; delete reserved to this tab only</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>UI &amp; Design System</h2>
+    <ul>
+      <li><strong>Two-layer CSS architecture</strong>: <code>tokens.less → tokens.css</code> then <code>ui.less → ui.css</code>; never edit the generated CSS files</li>
+      <li><strong>Semantic token system</strong>: all components use <code>--tor2e-*</code> tokens; no hardcoded hex or rgba values anywhere</li>
+      <li><code>@font-face</code> declarations added for custom heading and icon fonts</li>
+      <li>Watermark / background image system unified across all sheets; consistent naming throughout</li>
+      <li>Tab backgrounds support transparency via CSS <code>color-mix()</code></li>
+      <li>Shared LESS primitives: diamond wrapper and sidebar-section scaffolding (eliminates duplication across sheets)</li>
+      <li>Collapsible sections migrated to native <code>&lt;details&gt;/&lt;summary&gt;</code> elements</li>
+      <li>Soft-grid data table treatment applied to War Gear blocks (adversary sheet) and extended across data tables</li>
+      <li>Shared toggle-switch component extracted from duplicated LESS</li>
+      <li>Font Awesome chevrons replaced with icon markup instead of glyph-code strings</li>
+      <li>Round checkboxes vertically aligned in data tables; favoured checkbox dot centred</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Internationalisation</h2>
+    <ul>
+      <li><strong>Catalan (ca)</strong> locale added — partial coverage</li>
+      <li>Active Effect change mode labels added (English and French)</li>
+      <li><code>notes</code> field added to English and French translation files</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Bug Fixes</h2>
+
+    <h3>Foundry v14 compatibility</h3>
+    <ul>
+      <li>Status icons restored on tokens via <code>toggleStatusEffect</code></li>
+      <li>Active Effects Changes tab restored</li>
+      <li><code>FormDataExtended</code> reference updated to <code>foundry.applications.ux</code></li>
+      <li>Roll <code>customResult</code> deep-cloned in <code>toJSON</code> to prevent Foundry v14 flag-cleaning mutation</li>
+      <li><code>renderTokenHUD</code> token resolved via <code>tokenHud.document</code>; dead elevation selectors pruned</li>
+      <li>Chat context menu deprecations resolved; dice result styling corrected</li>
+      <li><code>setFlag</code> now stores <code>flagData</code> instead of <code>ChatMessage</code>; <code>miserableRoll</code> aligned in <code>_evaluateSync</code></li>
+    </ul>
+
+    <h3>Combat</h3>
+    <ul>
+      <li>Stance posture overlay restored after token effects refresh</li>
+      <li><code>engagedWith</code> comparison now uses <code>tokenId</code> against <code>Combatant.id</code> (not <code>Token.id</code>)</li>
+      <li>Combat flags migrated to <code>ForcedDeletion</code> operator</li>
+      <li>Shield item retrieval for adversaries now includes all items, not only equipped ones</li>
+    </ul>
+
+    <h3>Avatar</h3>
+    <ul>
+      <li>Avatar editing compliant with Foundry v14, Tokenizer, and Tokenizer 2</li>
+    </ul>
+
+    <h3>Sheets — general</h3>
+    <ul>
+      <li>Tabs navigation available in read-only sheets (actors and items)</li>
+      <li>Collapsible section toggles restored on actor sheets</li>
+      <li>Dialog popup layout fixed (header and content structure)</li>
+      <li>Watermark centering fixed on NPC, Lore, and Character sheets</li>
+      <li>Item sheet header layout aligned; watermarks harmonised with icon fallback</li>
+      <li>Stat-diamond-card: duplicate title in label removed</li>
+      <li>Sidebar name font size reduced to prevent wrapping on long names</li>
+      <li>Tooltip overflow/positioning conflict with Foundry sidebar fixed</li>
+      <li>Roll popup and dialog popup style ownership separated</li>
+      <li>Undertaking dialog layout and styling improved</li>
+    </ul>
+
+    <h3>Other</h3>
+    <ul>
+      <li><code>Tor2eTokenDocument</code> double declaration removed</li>
+      <li>Song / UndertakingDialog <code>FormDataExtended</code> reference updated</li>
+      <li>Standing: V2 attribute input width expanded</li>
+      <li>Mount item structure updated; used state management added</li>
+      <li>Playwright tests: localhost port updated from 300X to 310X</li>
+    </ul>
+  </div>
+
+  <div class="section-break"><span>✦</span></div>
+
+  <div class="section">
+    <h2>Internal / Technical</h2>
+    <ul>
+      <li><code>Tor2eActor</code> renamed to <code>Tor2eActorDocument</code></li>
+      <li>Character sheet: heavy computations moved to <code>_preparePartContext</code>; independent async operations parallelised; <code>owner</code> replaced by <code>editable</code>; <code>model</code> references replaced by <code>system</code></li>
+      <li>ESLint + Stylelint configurations added; lint must pass at zero errors and warnings before any PR</li>
+      <li>pnpm updated to 10.24.0</li>
+      <li>Dead AppV1 actor sheet files removed (character, NPC, Lore)</li>
+      <li>Redundant template defaults removed from Community, NPC, and Lore actors</li>
+    </ul>
+  </div>
+</div>
+
+</body></html>
