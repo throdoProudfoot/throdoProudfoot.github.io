@@ -204,6 +204,38 @@
     color: var(--danger-text);
   }
 
+  .quotation {
+  display: block;
+  max-width: 480px;
+  margin: 0.25rem auto 1.5rem;
+
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.quotation::before {
+  content: "“";
+  color: var(--gold);
+  font-size: 1.4em;
+  line-height: 0;
+  margin-right: 0.12em;
+}
+
+.quotation::after {
+  content: "”";
+  color: var(--gold);
+  font-size: 1.4em;
+  line-height: 0;
+  margin-left: 0.12em;
+}
+
   /* ── Body text ── */
   p {
     margin-bottom: 0.85rem;
@@ -293,10 +325,11 @@
 <div class="page">
 <header class="doc-header">
 <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT System</div>
-<h1>Changelog <em>v6.0.0</em></h1>
+<h1>Changelog em>Andúril release</em></h1>
+<quote class="quotation">TOR2e, reforged from the shards.</quote>
 <div class="meta-row">
 <span class="badge">v6.0.0</span>
-<span class="meta-label">Released 2026-08-15</span>
+<span class="meta-label">Released 2026-08-16</span>
 <span class="meta-label">·</span>
 <span class="meta-label">Requires Foundry VTT 14+</span>
 </div>

@@ -131,6 +131,38 @@
     border: 1px solid var(--gold-border);
   }
 
+  .quotation {
+  display: block;
+  max-width: 480px;
+  margin: 0.25rem auto 1.5rem;
+
+  font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.quotation::before {
+  content: "“";
+  color: var(--gold);
+  font-size: 1.4em;
+  line-height: 0;
+  margin-right: 0.12em;
+}
+
+.quotation::after {
+  content: "”";
+  color: var(--gold);
+  font-size: 1.4em;
+  line-height: 0;
+  margin-left: 0.12em;
+}
+
   /* ── Lead paragraph ── */
   .lead {
     font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
@@ -258,12 +290,21 @@
 <div class="page">
 <header class="doc-header">
 <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT</div>
-<h1><em>v6.0.0</em> is out</h1>
+<h1><em>Andúril release</em> is out</h1>
+<quote class="quotation">TOR2e, reforged from the shards.</quote>
 <div class="badge-row">
 <span class="badge">v6.0.0</span>
 <span class="badge outline">Foundry VTT 14+</span>
 </div>
 </header>
+<div class="warning-block">
+<div class="warning-heading">Before you update</div>
+<ul>
+<li><strong>Foundry VTT v14 is required.</strong> Update Foundry before installing TOR2E v6.0.0.</li>
+<li><strong>Back up your world.</strong> A one-way migration runs automatically on first load.</li>
+</ul>
+</div>
+<div class="section-break"><span>✦</span></div>
 <p class="lead">
     This is the biggest release since TOR2E's first day on Foundry. 
 Every sheet — actors and items — has been completely rebuilt on the 
@@ -319,14 +360,6 @@ actions — all in the sidebar.</p>
 </div>
 </li>
 </ul>
-<div class="section-break"><span>✦</span></div>
-<div class="warning-block">
-<div class="warning-heading">Before you update</div>
-<ul>
-<li><strong>Foundry VTT v14 is required.</strong> Update Foundry before installing TOR2E v6.0.0.</li>
-<li><strong>Back up your world.</strong> A one-way migration runs automatically on first load.</li>
-</ul>
-</div>
 <p class="footer-note">
     Download via the Foundry VTT package manager. Found a bug? Open an issue on GitLab or drop it in #bug-reports.<br/>
     Enjoy your adventures in Middle-earth. 🌄
