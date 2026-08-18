@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TOR2E v6.0.1 Release Notes</title>
+    <style>
+      :root {
+        --bg: #f5f0e8;
+        --surface: #fffcf7;
+        --ink: #1c1914;
+        --ink-muted: #6b6358;
+        --gold: #8a6b2a;
+        --gold-bg: rgba(138, 107, 42, 0.1);
+        --gold-border: rgba(138, 107, 42, 0.3);
+        --danger-bg: rgba(122, 46, 26, 0.09);
+        --danger-border: #7a2e1a;
+        --danger-text: #6b2416;
+        --rule: rgba(28, 25, 20, 0.13);
+        --badge-bg: #8a6b2a;
+        --badge-text: #fffcf7;
+        --card-bg: rgba(255, 252, 247, 0.8);
+        --card-border: rgba(28, 25, 20, 0.1);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16130e;
+          --surface: #1f1b14;
+          --ink: #e4d9c4;
+          --ink-muted: #998e7d;
+          --gold: #c4a24a;
+          --gold-bg: rgba(196, 162, 74, 0.12);
+          --gold-border: rgba(196, 162, 74, 0.3);
+          --danger-bg: rgba(196, 88, 64, 0.13);
+          --danger-border: #c45840;
+          --danger-text: #e07a60;
+          --rule: rgba(228, 217, 196, 0.11);
+          --badge-bg: #c4a24a;
+          --badge-text: #16130e;
+          --card-bg: rgba(31, 27, 20, 0.9);
+          --card-border: rgba(228, 217, 196, 0.09);
+        }
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #16130e;
+        --surface: #1f1b14;
+        --ink: #e4d9c4;
+        --ink-muted: #998e7d;
+        --gold: #c4a24a;
+        --gold-bg: rgba(196, 162, 74, 0.12);
+        --gold-border: rgba(196, 162, 74, 0.3);
+        --danger-bg: rgba(196, 88, 64, 0.13);
+        --danger-border: #c45840;
+        --danger-text: #e07a60;
+        --rule: rgba(228, 217, 196, 0.11);
+        --badge-bg: #c4a24a;
+        --badge-text: #16130e;
+        --card-bg: rgba(31, 27, 20, 0.9);
+        --card-border: rgba(228, 217, 196, 0.09);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 0 1rem 5rem;
+      }
+
+      .page {
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      /* ── Header ── */
+      .doc-header {
+        padding: 3.5rem 0 2.5rem;
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 2.75rem;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+      }
+
+      h1 {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-weight: normal;
+        line-height: 1.15;
+        color: var(--ink);
+        text-wrap: balance;
+      }
+
+      h1 em {
+        color: var(--gold);
+        font-style: normal;
+      }
+
+      .meta-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .badge {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 3px 10px;
+        border-radius: 2px;
+      }
+
+      .meta-label {
+        font-size: 13px;
+        color: var(--ink-muted);
+      }
+
+      /* ── Warning block ── */
+      .warning-block {
+        background: var(--danger-bg);
+        border-left: 3px solid var(--danger-border);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 3px 3px 0;
+        margin-bottom: 2.5rem;
+      }
+
+      .warning-block .warning-heading {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1.1rem;
+        font-weight: normal;
+        color: var(--danger-text);
+        margin-bottom: 0.6rem;
+      }
+
+      .warning-block p,
+      .warning-block li {
+        font-size: 14px;
+        color: var(--ink);
+        margin-bottom: 0.35rem;
+      }
+
+      .warning-block ul {
+        margin-left: 1.2rem;
+        margin-top: 0.5rem;
+      }
+
+      /* ── Section headings ── */
+      h2 {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: normal;
+        color: var(--ink);
+        text-wrap: balance;
+        margin-bottom: 0.9rem;
+      }
+
+      h3 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 1.5rem 0 0.5rem;
+      }
+
+      /* ── Body copy ── */
+      p {
+        margin-bottom: 0.85rem;
+        color: var(--ink);
+      }
+
+      ul {
+        margin-left: 1.2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      li {
+        margin-bottom: 0.3rem;
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: var(--ink);
+      }
+
+      li strong {
+        font-weight: 600;
+      }
+
+      .quotation {
+        display: block;
+        max-width: 480px;
+        margin: 0.25rem auto 1.5rem;
+
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0.025em;
+
+        color: var(--ink-muted);
+        text-align: center;
+      }
+
+      .quotation::before {
+        content: "“";
+        color: var(--gold);
+        font-size: 1.4em;
+        line-height: 0;
+        margin-right: 0.12em;
+      }
+
+      .quotation::after {
+        content: "”";
+        color: var(--gold);
+        font-size: 1.4em;
+        line-height: 0;
+        margin-left: 0.12em;
+      }
+
+      /* ── Feature cards grid ── */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1.5rem 0 2.5rem;
+      }
+
+      .card {
+        background: var(--card-bg);
+        padding: 1.25rem 1.25rem 1.1rem;
+      }
+
+      .card-icon {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .card-title {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1.05rem;
+        color: var(--ink);
+        margin-bottom: 0.4rem;
+        font-weight: normal;
+      }
+
+      .card p {
+        font-size: 13.5px;
+        color: var(--ink-muted);
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      /* ── Section divider ── */
+      .section-break {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2.5rem 0 2rem;
+      }
+      .section-break::before,
+      .section-break::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--rule);
+      }
+      .section-break span {
+        color: var(--ink-muted);
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        opacity: 0.6;
+      }
+
+      /* ── Upgrade steps ── */
+      .steps {
+        counter-reset: steps;
+        margin: 1rem 0;
+        list-style: none;
+      }
+
+      .steps li {
+        counter-increment: steps;
+        display: flex;
+        gap: 1rem;
+        align-items: baseline;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 14.5px;
+      }
+
+      .steps li:last-child {
+        border-bottom: none;
+      }
+
+      .steps li::before {
+        content: counter(steps);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        background: var(--gold-bg);
+        border: 1px solid var(--gold-border);
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 50%;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ── Maintenance info block ── */
+      .info-block {
+        background: var(--gold-bg);
+        border-left: 3px solid var(--gold);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 3px 3px 0;
+        margin-bottom: 2.5rem;
+      }
+
+      .info-block .info-heading {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1.1rem;
+        font-weight: normal;
+        color: var(--gold);
+        margin-bottom: 0.6rem;
+      }
+
+      .info-block p,
+      .info-block li {
+        font-size: 14px;
+        color: var(--ink);
+        margin-bottom: 0.35rem;
+      }
+
+      .info-block ul {
+        margin-left: 1.2rem;
+        margin-top: 0.5rem;
+      }
+
+      a {
+        color: var(--gold);
+        text-decoration-color: var(--gold-border);
+        text-underline-offset: 2px;
+      }
+
+      a:hover {
+        text-decoration-color: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="doc-header">
+        <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT System</div>
+        <h1>Release Notes — <em>v6.0.1</em></h1>
+        <div class="meta-row">
+          <span class="badge">v6.0.1</span>
+          <span class="meta-label">Release date · 2026-08-18</span>
+          <span class="meta-label">·</span>
+          <span class="meta-label">Foundry VTT 14</span>
+        </div>
+      </header>
+
+      <div class="info-block">
+        <div class="info-heading">Maintenance release</div>
+        <ul>
+          <li>
+            <strong>No data migration is associated with this release.</strong>
+          </li>
+          <li>
+            <strong>Foundry VTT v14 remains the supported platform.</strong>
+          </li>
+        </ul>
+      </div>
+
+      <section>
+        <h2>A stability pass after v6.0.0</h2>
+        <p>
+          Version 6.0.1 is a corrective release focused on stabilizing the major
+          changes introduced in v6.0.0, especially Foundry VTT v14 compatibility
+          and the sheets rebuilt on ApplicationV2.
+        </p>
+        <p>
+          It restores a number of interactions that had become unreliable or
+          inaccessible, prevents several cases where edited data could be lost
+          or altered, and brings the diamond components used across the sheets
+          under one consistent visual state model.
+        </p>
+      </section>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <section>
+        <h2>What’s fixed</h2>
+        <div class="cards">
+          <div class="card">
+            <span class="card-icon">🛡️</span>
+            <div class="card-title">Player-hero resources</div>
+            <p>
+              Shadow Scars are editable again, and recovering Hope no longer
+              resets the Community’s maximum Fellowship Points.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">👁️</span>
+            <div class="card-title">Community sheet</div>
+            <p>
+              Eye Awareness respects Lore-master-only visibility, and long
+              Connections lists can now be scrolled normally.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🧭</span>
+            <div class="card-title">Journeys &amp; Journey Logs</div>
+            <p>
+              Small Companies can assign multiple journey roles to one
+              Player-hero, and queued Item-sheet saves complete before a sheet
+              closes.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🖼️</span>
+            <div class="card-title">Sheet reliability</div>
+            <p>
+              Item image editing and resizing are restored, while document
+              portraits and tokens now display consistently across sheet types.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">◆</span>
+            <div class="card-title">Diamond consistency</div>
+            <p>
+              Editable, read-only, and computed diamonds now use an explicit
+              shared state contract and consistent design tokens.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🧪</span>
+            <div class="card-title">Technical quality</div>
+            <p>
+              Lint warnings were cleaned up and the Playwright regression suite
+              was hardened around Foundry v14 interaction contracts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <section>
+        <h2>Interface polish</h2>
+        <ul>
+          <li>
+            TOR2E heading styles are now scoped to the system UI and no longer
+            override Foundry’s native headings.
+          </li>
+          <li>
+            The Load and Shadow meters on the Character Sheet have been
+            reorganized for a clearer visual hierarchy.
+          </li>
+          <li>
+            Image display behavior is standardized across Actor and Item sheets.
+          </li>
+          <li>
+            Diamond components now communicate whether a value is editable,
+            read-only, or computed through one shared visual language.
+          </li>
+        </ul>
+      </section>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <section>
+        <h2>How to upgrade</h2>
+        <ol class="steps">
+          <li>Make sure you are running Foundry VTT v14.</li>
+          <li>Install or update TOR2E to v6.0.1 from the package manager.</li>
+          <li>
+            Open your world normally. No v6.0.1 data migration is required.
+          </li>
+          <li>
+            Report any remaining issue on the project’s GitLab issue tracker.
+          </li>
+        </ol>
+      </section>
+    </div>
+  </body>
+</html>

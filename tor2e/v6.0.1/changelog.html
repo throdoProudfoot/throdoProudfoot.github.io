@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TOR2E v6.0.1 Changelog</title>
+    <style>
+      :root {
+        --bg: #f5f0e8;
+        --surface: #fffcf7;
+        --ink: #1c1914;
+        --ink-muted: #6b6358;
+        --gold: #8a6b2a;
+        --gold-bg: rgba(138, 107, 42, 0.1);
+        --gold-border: rgba(138, 107, 42, 0.35);
+        --danger-bg: rgba(122, 46, 26, 0.09);
+        --danger-border: #7a2e1a;
+        --danger-text: #6b2416;
+        --rule: rgba(28, 25, 20, 0.14);
+        --table-border: rgba(28, 25, 20, 0.12);
+        --code-bg: rgba(28, 25, 20, 0.06);
+        --badge-bg: #8a6b2a;
+        --badge-text: #fffcf7;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #16130e;
+          --surface: #1f1b14;
+          --ink: #e4d9c4;
+          --ink-muted: #998e7d;
+          --gold: #c4a24a;
+          --gold-bg: rgba(196, 162, 74, 0.12);
+          --gold-border: rgba(196, 162, 74, 0.35);
+          --danger-bg: rgba(196, 88, 64, 0.12);
+          --danger-border: #c45840;
+          --danger-text: #e07a60;
+          --rule: rgba(228, 217, 196, 0.12);
+          --table-border: rgba(228, 217, 196, 0.1);
+          --code-bg: rgba(228, 217, 196, 0.07);
+          --badge-bg: #c4a24a;
+          --badge-text: #16130e;
+        }
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #16130e;
+        --surface: #1f1b14;
+        --ink: #e4d9c4;
+        --ink-muted: #998e7d;
+        --gold: #c4a24a;
+        --gold-bg: rgba(196, 162, 74, 0.12);
+        --gold-border: rgba(196, 162, 74, 0.35);
+        --danger-bg: rgba(196, 88, 64, 0.12);
+        --danger-border: #c45840;
+        --danger-text: #e07a60;
+        --rule: rgba(228, 217, 196, 0.12);
+        --table-border: rgba(228, 217, 196, 0.1);
+        --code-bg: rgba(228, 217, 196, 0.07);
+        --badge-bg: #c4a24a;
+        --badge-text: #16130e;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-size: 15px;
+        line-height: 1.65;
+        padding: 0 1rem 5rem;
+      }
+
+      .page {
+        max-width: 740px;
+        margin: 0 auto;
+      }
+
+      /* ── Header ── */
+      .doc-header {
+        padding: 3.5rem 0 2.5rem;
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 2.5rem;
+      }
+
+      .doc-header .eyebrow {
+        font-family: system-ui, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+      }
+
+      .doc-header h1 {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-weight: normal;
+        line-height: 1.15;
+        color: var(--ink);
+        text-wrap: balance;
+        margin-bottom: 1rem;
+      }
+
+      .doc-header h1 em {
+        color: var(--gold);
+        font-style: normal;
+      }
+
+      .meta-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+
+      .badge {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 3px 10px;
+        border-radius: 2px;
+      }
+
+      .meta-label {
+        font-size: 13px;
+        color: var(--ink-muted);
+      }
+
+      /* ── Section divider ── */
+      .section-break {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2.75rem 0 2rem;
+        color: var(--rule);
+      }
+      .section-break::before,
+      .section-break::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--rule);
+      }
+      .section-break span {
+        color: var(--ink-muted);
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        opacity: 0.7;
+      }
+
+      /* ── Section headings ── */
+      h2 {
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1.45rem;
+        font-weight: normal;
+        color: var(--ink);
+        text-wrap: balance;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 1.75rem 0 0.65rem;
+      }
+
+      h3:first-child {
+        margin-top: 0;
+      }
+
+      /* ── Breaking changes ── */
+      .breaking {
+        background: var(--danger-bg);
+        border-left: 3px solid var(--danger-border);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 3px 3px 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .breaking h2 {
+        color: var(--danger-text);
+        margin-bottom: 0.75rem;
+      }
+
+      .breaking ul {
+        margin-left: 1.25rem;
+      }
+
+      .breaking li {
+        color: var(--ink);
+        margin-bottom: 0.4rem;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .breaking li strong {
+        color: var(--danger-text);
+      }
+
+      .quotation {
+        display: block;
+        max-width: 480px;
+        margin: 0.25rem auto 1.5rem;
+
+        font-family:
+          "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0.025em;
+
+        color: var(--ink-muted);
+        text-align: center;
+      }
+
+      .quotation::before {
+        content: "“";
+        color: var(--gold);
+        font-size: 1.4em;
+        line-height: 0;
+        margin-right: 0.12em;
+      }
+
+      .quotation::after {
+        content: "”";
+        color: var(--gold);
+        font-size: 1.4em;
+        line-height: 0;
+        margin-left: 0.12em;
+      }
+
+      /* ── Body text ── */
+      p {
+        margin-bottom: 0.85rem;
+        color: var(--ink);
+        max-width: 66ch;
+      }
+
+      ul,
+      ol {
+        margin-left: 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+
+      li {
+        margin-bottom: 0.3rem;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--ink);
+      }
+
+      li strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      code {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 12.5px;
+        background: var(--code-bg);
+        padding: 1px 5px;
+        border-radius: 2px;
+        color: var(--ink);
+      }
+
+      /* ── Table ── */
+      .table-wrap {
+        overflow-x: auto;
+        margin: 1rem 0 1.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13.5px;
+      }
+
+      thead tr {
+        border-top: 2px solid var(--gold-border);
+        border-bottom: 1px solid var(--table-border);
+      }
+
+      th {
+        text-align: left;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        padding: 0.5rem 0.75rem;
+      }
+
+      td {
+        padding: 0.5rem 0.75rem;
+        color: var(--ink);
+        border-bottom: 1px solid var(--table-border);
+        vertical-align: top;
+      }
+
+      td code {
+        font-size: 12px;
+      }
+
+      /* ── Section grouping ── */
+      .section {
+        margin-bottom: 0.5rem;
+      }
+
+      /* ── Internal rule for sub-sections ── */
+      .inner-rule {
+        border: none;
+        border-top: 1px solid var(--rule);
+        margin: 1.5rem 0;
+      }
+
+      a {
+        color: var(--gold);
+        text-decoration-color: var(--gold-border);
+        text-underline-offset: 2px;
+      }
+
+      a:hover {
+        text-decoration-color: var(--gold);
+      }
+
+      .maintenance {
+        background: var(--gold-bg);
+        border-left: 3px solid var(--gold);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 3px 3px 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .maintenance h2 {
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+      }
+
+      .maintenance p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="doc-header">
+        <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT System</div>
+        <h1>Changelog <em>v6.0.1</em></h1>
+        <div class="meta-row">
+          <span class="badge">v6.0.1</span>
+          <span class="meta-label">Release date · 2026-08-18</span>
+          <span class="meta-label">·</span>
+          <span class="meta-label">Foundry VTT 14</span>
+        </div>
+      </header>
+
+      <div class="section">
+        <div class="maintenance">
+          <h2>Maintenance release</h2>
+          <p>
+            v6.0.1 stabilizes the Foundry VTT v14 and ApplicationV2 changes
+            delivered in v6.0.0. It contains corrective work only; no data
+            migration is associated with this release.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <div class="section">
+        <h2>Player-heroes &amp; Communities</h2>
+        <ul>
+          <li>
+            <strong>Shadow Scars</strong> can once again be edited from the
+            Resources tab of the Player-hero sheet.
+            <strong>Temporary Shadow</strong> remains managed from the sidebar,
+            while total Shadow continues to be calculated automatically.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/621"
+              >#621</a
+            >
+          </li>
+          <li>
+            The maximum number of <strong>Fellowship Points</strong> is no
+            longer reset to <code>0</code> when a Player-hero recovers
+            <strong>Hope</strong> during a short or long rest.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/615"
+              >#615</a
+            >
+          </li>
+          <li>
+            <strong>Eye Awareness</strong> information is no longer shown to
+            players when the system setting restricts its visibility to the
+            <strong>Lore-master</strong>.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/616"
+              >#616</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <div class="section">
+        <h2>Journeys &amp; Journey Logs</h2>
+        <ul>
+          <li>
+            Small <strong>Companies</strong> can once again assign multiple
+            <strong>journey roles</strong> to the same Player-hero. Form
+            submissions now preserve the other array entries instead of
+            overwriting them.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/618"
+              >#618</a
+            >
+          </li>
+          <li>
+            Closing an Item sheet immediately after editing now waits for
+            already queued saves to complete. This notably prevents the loss of
+            a recently entered Company member name in a
+            <strong>Journey Log</strong>.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/623"
+              >#623</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <div class="section">
+        <h2>Sheets &amp; Interface</h2>
+        <ul>
+          <li>
+            Image editing has been restored on ApplicationV2 Item sheets, for
+            both world Items and Items embedded in an Actor. The action remains
+            restricted to users with edit permission and retains the expected
+            compatibility with <strong>Tokenizer</strong> and
+            <strong>Tokenizer2</strong>.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/624"
+              >#624</a
+            >
+          </li>
+          <li>
+            ApplicationV2 Item sheets are once again resizable in Foundry VTT
+            v14.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/612"
+              >#612</a
+            >
+          </li>
+          <li>
+            TOR2E-specific heading styles are now scoped to the system interface
+            and no longer override Foundry VTT’s native heading styles.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/611"
+              >#611</a
+            >
+          </li>
+          <li>
+            The <strong>Connections</strong> list on the Community sheet is now
+            scrollable when many entries overflow the panel.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/610"
+              >#610</a
+            >
+          </li>
+          <li>
+            Document image display — portrait and token — is now consistent
+            across all sheet types.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/651"
+              >#651</a
+            >
+          </li>
+          <li>
+            The <strong>Load</strong> and <strong>Shadow</strong> meters on the
+            Character Sheet have an improved layout that better reflects their
+            visual hierarchy.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/652"
+              >#652</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <div class="section">
+        <h2>Diamond Consistency</h2>
+        <p>
+          The diamond components used across TOR2E now follow one explicit
+          visual and semantic state contract.
+        </p>
+
+        <h3>State model</h3>
+        <ul>
+          <li>
+            Diamond state design tokens (<code>--tor2e-diamond-*</code>) were
+            introduced in <code>tokens.less</code>, together with semantic CSS
+            classes <code>state--editable</code>, <code>state--readonly</code>,
+            and <code>state--computed</code>.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/653"
+              >#653</a
+            >
+          </li>
+          <li>
+            Read-only diamond center values now carry the explicit
+            <code>state--readonly</code> class.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/654"
+              >#654</a
+            >
+          </li>
+          <li>
+            Item-projection diamonds for Armour, Shield, and Headgear are
+            classified as <code>state--readonly</code>.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/655"
+              >#655</a
+            >
+          </li>
+          <li>
+            TN, Load, and Shadow diamonds carry the
+            <code>state--computed</code> class.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/656"
+              >#656</a
+            >
+          </li>
+          <li>
+            All editable diamond components carry the
+            <code>state--editable</code> class.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/657"
+              >#657</a
+            >
+          </li>
+          <li>
+            Diamond state contract tests were extended and the state convention
+            was documented.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/658"
+              >#658</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <div class="section">
+        <h2>Technical Quality</h2>
+        <ul>
+          <li>
+            Pre-existing ESLint warnings related to line length, JSDoc
+            documentation, and parameter ordering have been resolved, restoring
+            a clean lint baseline.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/622"
+              >#622</a
+            >
+          </li>
+          <li>
+            The Playwright regression suite has been updated around Foundry VTT
+            v14 interaction contracts: centralized document creation,
+            better-scoped selectors, explicit readiness checks, browser-error
+            diagnostics, and cleanup using exact document identifiers.
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/619"
+              >#619</a
+            >
+            ·
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/merge_requests/477"
+              >!477</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-break"><span>✦</span></div>
+
+      <div class="section">
+        <h2>Duplicate Report</h2>
+        <ul>
+          <li>
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/617"
+              >#617</a
+            >
+            reported the same Shadow Scars editing problem addressed by
+            <a
+              href="https://gitlab.com/herve.darritchon/foundryvtt-tor2e/-/issues/621"
+              >#621</a
+            >
+            and does not represent a separate fix.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
