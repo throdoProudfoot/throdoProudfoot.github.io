@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TOR2E vNext Release Notes</title>
+<title>TOR2E v6.2.0 Release Notes</title>
 <style>
 :root {
   --bg: #f5f0e8;
@@ -16,218 +16,397 @@
   --rule: rgba(28,25,20,.13);
   --code-bg: rgba(28,25,20,.06);
   --card-bg: rgba(255,252,247,.8);
-  --card-border: rgba(28,25,20,.1);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:#16130e; --surface:#1f1b14; --ink:#e4d9c4; --ink-muted:#998e7d;
-    --gold:#c4a24a; --gold-bg:rgba(196,162,74,.12); --gold-border:rgba(196,162,74,.3);
-    --rule:rgba(228,217,196,.11); --code-bg:rgba(228,217,196,.07);
-    --card-bg:rgba(31,27,20,.9); --card-border:rgba(228,217,196,.09);
+    --bg:#16130e;
+    --surface:#1f1b14;
+    --ink:#e4d9c4;
+    --ink-muted:#998e7d;
+    --gold:#c4a24a;
+    --gold-bg:rgba(196,162,74,.12);
+    --gold-border:rgba(196,162,74,.3);
+    --rule:rgba(228,217,196,.11);
+    --code-bg:rgba(228,217,196,.07);
+    --card-bg:rgba(31,27,20,.9);
   }
 }
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--ink);
+* { box-sizing: border-box; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
   font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
-  font-size:15px;line-height:1.7;padding:0 1rem 5rem
+  font-size:15px;
+  line-height:1.7;
+  padding:0 1rem 5rem;
 }
-.page{max-width:760px;margin:0 auto}
-header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--rule);margin-bottom:2.5rem}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
-h1,h2{font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;font-weight:normal;color:var(--ink)}
-h1{font-size:clamp(2rem,5vw,2.75rem);line-height:1.15;margin:0}
-h1 em{color:var(--gold);font-style:normal}
-h2{font-size:1.5rem;margin:0 0 .9rem}
-h3{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:1.6rem 0 .55rem}
-p{margin:0 0 .85rem}
-ul,ol{margin:0 0 .9rem 1.25rem}
-li{margin-bottom:.35rem;line-height:1.6}
-code{font-family:"Courier New",monospace;font-size:12.5px;background:var(--code-bg);padding:1px 5px;border-radius:2px}
-blockquote{margin:0 0 2rem;padding:1rem 1.25rem;background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 3px 3px 0}
-blockquote p{margin:.25rem 0;font-size:14px}
-.section-break{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 2rem}
-.section-break::before,.section-break::after{content:"";flex:1;height:1px;background:var(--rule)}
-.section-break span{color:var(--ink-muted);font-size:10px;opacity:.65}
-.steps{counter-reset:steps;list-style:none;margin:1rem 0;padding:0}
-.steps li{counter-increment:steps;display:flex;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule)}
-.steps li::before{content:counter(steps);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;min-width:22px;background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);font-size:11px;font-weight:700;border-radius:50%}
-strong{font-weight:650}
-
-.meta-row{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
-.badge{display:inline-block;background:var(--gold);color:var(--surface);font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:2px}
-.meta-label{font-size:13px;color:var(--ink-muted)}
-
-    h2{margin-top:2.3rem}
-    blockquote:first-of-type{margin-top:0}
-    </style>
+.page { max-width:760px; margin:0 auto; }
+header {
+  padding:3.5rem 0 2.5rem;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:2.5rem;
+}
+.eyebrow {
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:.75rem;
+}
+h1,h2 {
+  font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  font-weight:normal;
+  color:var(--ink);
+}
+h1 {
+  font-size:clamp(2rem,5vw,2.75rem);
+  line-height:1.15;
+  margin:0;
+}
+h1 em { color:var(--gold); font-style:normal; }
+h2 {
+  font-size:1.55rem;
+  margin:0 0 .9rem;
+}
+h3 {
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin:1.6rem 0 .55rem;
+}
+p { margin:0 0 .85rem; }
+ul { margin:0 0 .9rem 1.25rem; }
+li { margin-bottom:.38rem; line-height:1.6; }
+strong { font-weight:650; }
+code {
+  font-family:"Courier New",monospace;
+  font-size:12.5px;
+  background:var(--code-bg);
+  padding:1px 5px;
+  border-radius:2px;
+}
+.meta-row {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.75rem;
+  margin-top:1.25rem;
+}
+.badge {
+  display:inline-block;
+  background:var(--gold);
+  color:var(--surface);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.06em;
+  padding:3px 10px;
+  border-radius:2px;
+}
+.meta-label { font-size:13px; color:var(--ink-muted); }
+.intro {
+  background:var(--gold-bg);
+  border-left:3px solid var(--gold);
+  padding:1.25rem 1.5rem;
+  border-radius:0 3px 3px 0;
+  margin-bottom:2.5rem;
+}
+.intro p:last-child { margin-bottom:0; }
+.section-break {
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin:2.6rem 0 2rem;
+}
+.section-break::before,
+.section-break::after {
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--rule);
+}
+.section-break span {
+  color:var(--ink-muted);
+  font-size:10px;
+  opacity:.65;
+}
+.theme-summary {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  overflow:hidden;
+  margin:1.4rem 0 2.5rem;
+}
+.theme-card {
+  background:var(--card-bg);
+  padding:1.15rem 1.2rem;
+}
+.theme-card .icon {
+  display:block;
+  font-size:1.1rem;
+  margin-bottom:.35rem;
+}
+.theme-card strong {
+  display:block;
+  font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  font-weight:normal;
+  font-size:1.05rem;
+  margin-bottom:.3rem;
+}
+.theme-card p {
+  margin:0;
+  color:var(--ink-muted);
+  font-size:13.5px;
+  line-height:1.55;
+}
+.note {
+  color:var(--ink-muted);
+  font-size:13.5px;
+}
+.steps {
+  counter-reset:steps;
+  list-style:none;
+  margin:1rem 0;
+  padding:0;
+}
+.steps li {
+  counter-increment:steps;
+  display:flex;
+  gap:1rem;
+  align-items:baseline;
+  padding:.6rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.steps li::before {
+  content:counter(steps);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
+  min-width:22px;
+  background:var(--gold-bg);
+  border:1px solid var(--gold-border);
+  color:var(--gold);
+  font-size:11px;
+  font-weight:700;
+  border-radius:50%;
+}
+</style>
 </head>
 <body>
 <div class="page">
+
 <header>
   <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT System</div>
-  <h1>Release Notes — <em>vNext</em></h1>
+  <h1>Release Notes — <em>v6.2.0</em></h1>
   <div class="meta-row">
-    <span class="badge">vNext</span>
-    <span class="meta-label">Release date · TBD · Foundry VTT 14</span>
+    <span class="badge">v6.2.0</span>
+    <span class="meta-label">Release date · 2026-08-27</span>
+    <span class="meta-label">·</span>
+    <span class="meta-label">Foundry VTT 14</span>
   </div>
 </header>
-<blockquote>
-<p><strong>Release date:</strong> TBD</p>
-<p><strong>Platform:</strong> Foundry VTT 14</p>
-</blockquote>
-<h2>A release focused on trust at the table</h2>
-<p>This release is less about adding another layer of interface and more about making the system behave the way players and Loremasters expect it to behave.</p>
-<p>Across rolls, sheets, Active Effects, migrations, Communities, NPCs and combat interactions, the focus has been the same: <strong>the value you see should be the value the system uses, the data you enter should remain saved, and the result of a roll should remain faithful to The One Ring rules.</strong></p>
-<p>A large part of the work also strengthens the automated regression suite behind TOR2E. Most of that work is invisible during play, but it gives the system a much stronger safety net for future releases.</p>
+
+<div class="intro">
+  <p><strong>v6.2.0 is primarily a reliability and consolidation release.</strong></p>
+  <p>
+    Rather than introducing one large user-facing feature, this version strengthens the foundations of TOR2E:
+    more automated regression coverage, fixes to several gameplay and persistence issues, terminology cleanup,
+    and architectural work around Foundry VTT 14, Active Effects, data models and sheet updates.
+  </p>
+</div>
+
+<div class="theme-summary">
+  <div class="theme-card">
+    <span class="icon">🧪</span>
+    <strong>Regression tests</strong>
+    <p>Many more table workflows are now protected end-to-end.</p>
+  </div>
+  <div class="theme-card">
+    <span class="icon">🛠️</span>
+    <strong>Bug fixes</strong>
+    <p>Rolls, persistence, sheets, migrations and combat workflows received targeted fixes.</p>
+  </div>
+  <div class="theme-card">
+    <span class="icon">🌍</span>
+    <strong>Translation &amp; language</strong>
+    <p>Terminology and legacy project wording were cleaned up.</p>
+  </div>
+  <div class="theme-card">
+    <span class="icon">⚙️</span>
+    <strong>Tech &amp; architecture</strong>
+    <p>Source/effective-value handling and the test/tooling foundations were simplified.</p>
+  </div>
+</div>
+
 <div class="section-break"><span>✦</span></div>
-<h2>🎲 Rolls are more reliable</h2>
-<p>The roll engine and Roll Dialog received a broad reliability pass covering many situations that matter during actual play.</p>
-<h3>Better rule handling</h3>
-<ul>
-<li><strong>Weary rolls</strong> correctly handle Success Dice results of <code>1–3</code>.</li>
-<li><strong>Miserable + Eye of Sauron</strong> correctly produces an automatic failure.</li>
-<li><strong>Gandalf Rune</strong> and <strong>Eye of Sauron</strong> outcomes are covered by deterministic regression tests.</li>
-<li><strong>Favoured</strong>, <strong>Ill-favoured</strong>, and cancellation between the two states are now explicitly protected by automated tests.</li>
-<li>Roll result classification is verified from <strong>Failure</strong> through <strong>Extraordinary Success</strong>.</li>
-<li>Task rolls now respect Foundry's configured <strong>chat message mode</strong>.</li>
-</ul>
-<h3>Roll Dialog bonuses</h3>
-<p>The Roll Dialog is now protected against several regressions around manual modifiers:</p>
-<ul>
-<li>manual <strong>bonus Success Dice</strong>;</li>
-<li>manual <strong>penalty Success Dice</strong>;</li>
-<li>Success Dice pools correctly stop at a <strong>minimum of zero</strong>;</li>
-<li>spending <strong>Hope</strong>;</li>
-<li>the <strong>Inspired</strong> bonus;</li>
-<li>manual <strong>companion support</strong> bonus dice.</li>
-</ul>
-<p>These mechanics remain player-driven where the system currently expects a manual choice, but their impact on the final dice pool is now covered end-to-end.</p>
+
+<section>
+  <h2>🧪 Regression tests</h2>
+  <p>
+    The largest visible body of work in v6.2.0 is the expansion of the automated regression suite.
+    TOR2E now protects many more complete Foundry workflows instead of relying only on isolated unit tests.
+  </p>
+
+  <h3>Dice and Roll Dialog</h3>
+  <ul>
+    <li><strong>Weary</strong> Success Dice behavior is covered for results 1–3.</li>
+    <li><strong>Miserable + Eye of Sauron</strong> automatic failure is covered.</li>
+    <li><strong>Gandalf Rune</strong> and <strong>Eye of Sauron</strong> outcomes are covered deterministically.</li>
+    <li><strong>Favoured</strong>, <strong>Ill-favoured</strong>, and cancellation between the two states are covered.</li>
+    <li><strong>Hope</strong> and <strong>Inspired</strong> bonuses are covered through the Roll Dialog.</li>
+    <li>Manual bonus and penalty Success Dice are covered, including the <strong>zero floor</strong>.</li>
+    <li>Manual companion support and Fellowship Focus/support interactions now have regression coverage.</li>
+  </ul>
+
+  <h3>Actors, Items and Communities</h3>
+  <ul>
+    <li>Player-hero creation and persistence after reopening the sheet.</li>
+    <li>Adversary Endurance and Hate persistence.</li>
+    <li>NPC Occupation and Description persistence.</li>
+    <li>Lore Actor Role and Description persistence.</li>
+    <li>Community Connections and Patrons persistence.</li>
+    <li>Armour creation and persistence.</li>
+    <li>Creation of every simple Item type through the Foundry UI.</li>
+    <li>Persistence of Item types using Active Effects.</li>
+  </ul>
+
+  <h3>Combat and chat attribution</h3>
+  <ul>
+    <li>Weapon rolls with combat metadata.</li>
+    <li>Protection actions against the correct adversary.</li>
+    <li>NPC skill-roll attribution in chat.</li>
+    <li>Community traveller skill-roll attribution to the correct Actor and action.</li>
+  </ul>
+
+  <p class="note">
+    Much of this section is invisible during play, but it materially reduces the risk of future releases
+    breaking established TOR2E rules and workflows.
+  </p>
+</section>
+
 <div class="section-break"><span>✦</span></div>
-<h2>⚔️ Combat and action messages are safer</h2>
-<p>Combat-related rolls now have stronger regression coverage around the complete table workflow.</p>
-<ul>
-<li>Weapon rolls are exercised with their combat context.</li>
-<li>Attack chat messages preserve the information required by follow-up actions.</li>
-<li>Protection-roll actions are tested against the correct adversary.</li>
-<li>Skill rolls triggered from NPCs and Community journey roles are checked to ensure the resulting chat message is attributed to the correct Actor and action.</li>
-</ul>
-<p>This reduces the risk of a roll being mechanically correct while being attached to the wrong character, adversary or action in chat.</p>
+
+<section>
+  <h2>🛠️ Bug fixes</h2>
+  <p>
+    v6.2.0 also resolves a set of issues affecting rolls, sheet editing, persistence and world upgrades.
+  </p>
+
+  <h3>Rolls</h3>
+  <ul>
+    <li>Roll result classification is protected from <strong>Failure</strong> through <strong>Extraordinary Success</strong>.</li>
+    <li>Task rolls now honor Foundry's configured <strong>chat message mode</strong>.</li>
+    <li>Skill migration preserves both <strong>rank</strong> and <strong>favoured</strong> state.</li>
+  </ul>
+
+  <h3>Active Effects and editable values</h3>
+  <ul>
+    <li>Active Effects are no longer unintentionally re-applied during full form submissions.</li>
+    <li>Editable fields targeted by Active Effects now reconcile displayed effective values with their stored source values.</li>
+    <li>Community and NPC editable fields now follow the same effective-value model.</li>
+  </ul>
+
+  <h3>Persistence and sheets</h3>
+  <ul>
+    <li>NPC and Lore editors were made reliable enough to preserve their edited rich-text fields.</li>
+    <li>Community Patron handling when dropping Characters was simplified and normalized.</li>
+    <li>Item sheets regain reliable scrolling.</li>
+    <li>Character Sheet tab handling for Endurance and Hope maximum values was corrected.</li>
+    <li>Window resize handles now remain usable above sheet content.</li>
+  </ul>
+
+  <h3>Migration safety</h3>
+  <ul>
+    <li>A failed world upgrade no longer advances the stored world version as if the migration had succeeded.</li>
+    <li>Partial-update side effects were removed from migration data handling.</li>
+  </ul>
+</section>
+
 <div class="section-break"><span>✦</span></div>
-<h2>◆ Active Effects now behave more predictably</h2>
-<p>A major internal cleanup changes how editable sheet fields interact with Active Effects.</p>
-<p>Previously, some sheet submissions could cause an Active Effect to be effectively applied again when unrelated data was edited. This could make displayed and stored values drift apart.</p>
-<p>The new model is simpler from a user point of view:</p>
-<ul>
-<li><strong>editable fields display their effective value</strong>;</li>
-<li>changes are safely converted back to the underlying source value when needed;</li>
-<li>Active Effects no longer get unintentionally re-applied during normal form submissions;</li>
-<li>Actor data preparation remains synchronous and predictable.</li>
-</ul>
-<p>The result is a much more coherent rule:</p>
-<blockquote>
-<p><strong>What you see on the sheet is the value you are editing, without corrupting the stored base value behind an Active Effect.</strong></p>
-</blockquote>
-<p>This work covers Character, Adversary, NPC and Community sheets and is backed by dedicated regression tests.</p>
+
+<section>
+  <h2>🌍 Translation &amp; language</h2>
+  <p>
+    This release does <strong>not</strong> contain a major translation-pack or internationalization overhaul.
+    The language-related changes visible in the release history are mainly terminology and project-name cleanup.
+  </p>
+  <ul>
+    <li>The legacy <strong>SWERPG</strong> label on the Character Sheet was corrected to <strong>TOR2E</strong>.</li>
+    <li>Project documentation and conventions were updated to replace remaining legacy SWERPG references with TOR2E terminology.</li>
+    <li>Documentation paths and internal naming were normalized to make future maintenance clearer and more consistent.</li>
+  </ul>
+</section>
+
 <div class="section-break"><span>✦</span></div>
-<h2>💾 Stronger data persistence</h2>
-<p>A large group of regressions now checks what matters after the sheet is closed and reopened: <strong>your data is still there</strong>.</p>
-<p>Coverage now includes:</p>
-<ul>
-<li>Player-hero data;</li>
-<li>Adversary <strong>Endurance</strong> and <strong>Hate</strong>;</li>
-<li>NPC <strong>Occupation</strong> and <strong>Description</strong>;</li>
-<li>Lore Actor <strong>Role</strong> and <strong>Description</strong>;</li>
-<li>Community <strong>Connections</strong> and <strong>Patrons</strong>;</li>
-<li>Armour;</li>
-<li>all simple Item types;</li>
-<li>Item types using Active Effects;</li>
-<li>skill <strong>rank</strong> and <strong>favoured</strong> state across data-model migration.</li>
-</ul>
-<p>The NPC, Lore and Item sheet editors were also adjusted where necessary so these workflows can be used and tested reliably.</p>
+
+<section>
+  <h2>⚙️ Tech &amp; architecture</h2>
+  <p>
+    A substantial part of v6.2.0 is architectural cleanup intended to make future development safer and easier to reason about.
+  </p>
+
+  <h3>Source values vs. effective values</h3>
+  <ul>
+    <li>Legacy <code>use-source-value</code> infrastructure was removed.</li>
+    <li>Source data is now encapsulated more explicitly in sheet context.</li>
+    <li>Community updates are built from source data more safely.</li>
+    <li>Actor data preparation remains synchronous.</li>
+    <li>Direct-write and update rules around <code>_source</code>, <code>_preUpdate</code> and effective values are now documented through ADRs.</li>
+  </ul>
+
+  <h3>Sheet architecture</h3>
+  <ul>
+    <li>The custom Actor and Item sheet submission queue was removed.</li>
+    <li>Character-type handling in extended Actor data preparation was simplified.</li>
+    <li>Journey Log updates now target the relevant collection entries instead of replacing broader structures.</li>
+    <li>Embedded Active Effect creation now returns the created documents as expected.</li>
+  </ul>
+
+  <h3>Tooling and test infrastructure</h3>
+  <ul>
+    <li>The JavaScript lint stack moved to <strong>ESLint 10 flat config</strong>.</li>
+    <li>A deterministic <code>DiceRig</code> was added for programmable dice results in tests.</li>
+    <li><code>TORSuccessDie.roll()</code> gained min/max result options used by the deterministic test infrastructure.</li>
+    <li>The E2E workflow was optimized so the Foundry world can stay open for a full regression campaign instead of reopening for every scenario.</li>
+    <li>Foundry VTT 14 Build 366+ user-selection and asynchronous tour-overlay handling were hardened.</li>
+    <li>E2E JSDoc, dice-testing and audit-method documentation were expanded.</li>
+  </ul>
+</section>
+
 <div class="section-break"><span>✦</span></div>
-<h2>👥 Communities are more dependable</h2>
-<p>Community handling received several targeted fixes.</p>
-<ul>
-<li>Patron handling when dropping Characters onto a Community has been simplified and made more consistent.</li>
-<li>Community updates are now built from source data more safely.</li>
-<li>Community editable fields follow the same effective-value model as other Actor sheets.</li>
-<li>Connections and Patron persistence are now covered end-to-end.</li>
-</ul>
-<p>The goal is to make the Community sheet behave like a dependable campaign record rather than a fragile collection of linked fields.</p>
+
+<section>
+  <h2>Upgrade</h2>
+  <ol class="steps">
+    <li>Make sure you are running a supported Foundry VTT 14 build.</li>
+    <li>Back up your world before updating.</li>
+    <li>Update TOR2E to v6.2.0 through Foundry's package manager.</li>
+    <li>Open your world normally and let the system perform any required upgrade work.</li>
+    <li>If a migration reports a failure, stop and investigate it rather than assuming the world was upgraded successfully.</li>
+  </ol>
+</section>
+
 <div class="section-break"><span>✦</span></div>
-<h2>🧭 Migration failures are safer</h2>
-<p>World upgrades now fail more defensively.</p>
-<p>If a migration cannot complete successfully, TOR2E no longer advances the stored world version as if the upgrade had succeeded.</p>
-<p>This prevents a failed migration from leaving the world marked as upgraded when its data may not actually be in the expected state.</p>
-<p>Migration handling for skill rank and favoured state has also been reinforced.</p>
-<div class="section-break"><span>✦</span></div>
-<h2>🖥️ Sheet and interface polish</h2>
-<p>Several smaller interface issues have been corrected along the way:</p>
-<ul>
-<li>NPC card editor and sidebar layout improvements;</li>
-<li>Item sheets regain reliable scrolling;</li>
-<li>Item-sheet dimensions and layout have been normalized;</li>
-<li>Undertaking description layout has been aligned with the rest of the system;</li>
-<li>combat task sheet readability has been improved;</li>
-<li>resize handles now stay usable above window content;</li>
-<li>the Character Sheet label now correctly references <strong>TOR2E</strong> rather than the legacy <strong>SWERPG</strong> name;</li>
-<li>Character sheet tabs correctly expose the relevant Endurance and Hope values.</li>
-</ul>
-<p>These changes are individually small, but together they make the ApplicationV2 interface feel more consistent.</p>
-<div class="section-break"><span>✦</span></div>
-<h2>🧪 A much stronger regression safety net</h2>
-<p>This release significantly expands TOR2E's end-to-end coverage.</p>
-<p>The automated suite now exercises complete Foundry workflows for:</p>
-<ul>
-<li>Character creation and persistence;</li>
-<li>simple and Active-Effect-enabled Items;</li>
-<li>Communities, Connections and Patrons;</li>
-<li>Character rolls and Short Rest;</li>
-<li>Weary rolls;</li>
-<li>Gandalf Rune and Eye of Sauron outcomes;</li>
-<li>Favoured and Ill-favoured rolls;</li>
-<li>Hope and Inspired bonuses;</li>
-<li>manual bonus and penalty dice;</li>
-<li>NPC skill-roll attribution;</li>
-<li>Community traveller-roll attribution;</li>
-<li>weapon and protection rolls;</li>
-<li>manual companion support;</li>
-<li>Fellowship Focus and support interactions.</li>
-</ul>
-<p>The E2E harness itself was also improved so a regression campaign can keep its Foundry world open for the duration of the test workflow instead of repeatedly opening and closing it.</p>
-<p>For players and Loremasters, the important part is not the test count itself: it is that <strong>more of the rules and workflows used at the table are now automatically checked before a release ships.</strong></p>
-<div class="section-break"><span>✦</span></div>
-<h2>🔧 Technical maintenance</h2>
-<p>Under the hood, this release also includes:</p>
-<ul>
-<li>migration to <strong>ESLint 10 flat config</strong>;</li>
-<li>updated E2E documentation and JSDoc conventions;</li>
-<li>deterministic dice testing through a dedicated <code>DiceRig</code>;</li>
-<li>explicit project guidance around source data, effective values and Active Effects;</li>
-<li>removal of legacy source-value infrastructure;</li>
-<li>removal of the custom Actor/Item sheet submission queue;</li>
-<li>targeted collection updates for Journey Logs;</li>
-<li>cleanup of obsolete debug logging and legacy styling aliases;</li>
-<li>documentation and ADRs clarifying safe Foundry document-update patterns.</li>
-</ul>
-<div class="section-break"><span>✦</span></div>
-<h2>Upgrade</h2>
-<ol class="steps">
-<li>Make sure your world is running on a supported <strong>Foundry VTT 14</strong> build.</li>
-<li>Back up your world before updating, as you should for any system update.</li>
-<li>Update TOR2E through Foundry's package manager.</li>
-<li>Open the world normally.</li>
-<li>If a migration reports a failure, stop and investigate it rather than continuing with the assumption that the world was upgraded.</li>
-</ol>
-<div class="section-break"><span>✦</span></div>
-<h2>In short</h2>
-<p>This release is about <strong>confidence</strong>.</p>
-<p>Confidence that a sheet does not quietly rewrite a value.</p>
-<p>Confidence that an Active Effect does not apply twice.</p>
-<p>Confidence that closing and reopening a document does not lose your changes.</p>
-<p>Confidence that a Hope bonus, a Weary die, a Protection roll or an Eye of Sauron result behaves the same way every time.</p>
-<p>That foundation matters because it makes the next features safer to build — and safer to use at the table.</p>
+
+<section>
+  <h2>In short</h2>
+  <p>
+    v6.2.0 is a foundation release: fewer silent regressions, safer sheet updates, more dependable persistence,
+    and significantly broader automated coverage of the rules and workflows used at the table.
+  </p>
+  <p>
+    The result is not one headline feature, but a TOR2E system that is better prepared for the next ones.
+  </p>
+</section>
+
 </div>
 </body>
 </html>
