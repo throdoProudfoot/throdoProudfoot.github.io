@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TOR2E v6.2.1 Release Notes</title>
+<style>
+
+:root {
+  --bg: #f5f0e8;
+  --surface: #fffcf7;
+  --ink: #1c1914;
+  --ink-muted: #6b6358;
+  --gold: #8a6b2a;
+  --gold-bg: rgba(138,107,42,.1);
+  --gold-border: rgba(138,107,42,.3);
+  --rule: rgba(28,25,20,.13);
+  --code-bg: rgba(28,25,20,.06);
+  --card-bg: rgba(255,252,247,.8);
+  --card-border: rgba(28,25,20,.1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#16130e; --surface:#1f1b14; --ink:#e4d9c4; --ink-muted:#998e7d;
+    --gold:#c4a24a; --gold-bg:rgba(196,162,74,.12); --gold-border:rgba(196,162,74,.3);
+    --rule:rgba(228,217,196,.11); --code-bg:rgba(228,217,196,.07);
+    --card-bg:rgba(31,27,20,.9); --card-border:rgba(228,217,196,.09);
+  }
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px;line-height:1.7;padding:0 1rem 5rem
+}
+.page{max-width:760px;margin:0 auto}
+header{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--rule);margin-bottom:2.5rem}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+h1,h2{font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;font-weight:normal;color:var(--ink)}
+h1{font-size:clamp(2rem,5vw,2.75rem);line-height:1.15;margin:0}
+h1 em{color:var(--gold);font-style:normal}
+h2{font-size:1.5rem;margin:0 0 .9rem}
+h3{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:1.6rem 0 .55rem}
+p{margin:0 0 .85rem}
+ul,ol{margin:0 0 .9rem 1.25rem}
+li{margin-bottom:.35rem;line-height:1.6}
+code{font-family:"Courier New",monospace;font-size:12.5px;background:var(--code-bg);padding:1px 5px;border-radius:2px}
+blockquote{margin:0 0 2rem;padding:1rem 1.25rem;background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 3px 3px 0}
+blockquote p{margin:.25rem 0;font-size:14px}
+.section-break{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 2rem}
+.section-break::before,.section-break::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-break span{color:var(--ink-muted);font-size:10px;opacity:.65}
+.steps{counter-reset:steps;list-style:none;margin:1rem 0;padding:0}
+.steps li{counter-increment:steps;display:flex;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+.steps li::before{content:counter(steps);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;min-width:22px;background:var(--gold-bg);border:1px solid var(--gold-border);color:var(--gold);font-size:11px;font-weight:700;border-radius:50%}
+strong{font-weight:650}
+.meta-row{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.badge{display:inline-block;background:var(--gold);color:var(--surface);font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:2px}
+.meta-label{font-size:13px;color:var(--ink-muted)}
+
+
+.intro {
+  background:var(--gold-bg);
+  border-left:3px solid var(--gold);
+  padding:1.25rem 1.5rem;
+  border-radius:0 3px 3px 0;
+  margin-bottom:2.5rem;
+}
+.intro p:last-child { margin-bottom:0; }
+.theme-summary {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  overflow:hidden;
+  margin:1.4rem 0 2.5rem;
+}
+.theme-card {
+  background:var(--card-bg);
+  padding:1.15rem 1.2rem;
+}
+.theme-card .icon {
+  display:block;
+  font-size:1.1rem;
+  margin-bottom:.35rem;
+}
+.theme-card strong {
+  display:block;
+  font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  font-weight:normal;
+  font-size:1.05rem;
+  margin-bottom:.3rem;
+}
+.theme-card p {
+  margin:0;
+  color:var(--ink-muted);
+  font-size:13.5px;
+  line-height:1.55;
+}
+.note { color:var(--ink-muted); font-size:13.5px; }
+
+h2{font-size:1.55rem}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="eyebrow">The One Ring 2nd Edition · Foundry VTT System</div>
+  <h1>Release Notes — <em>v6.2.1</em></h1>
+  <div class="meta-row">
+    <span class="badge">v6.2.1</span>
+    <span class="meta-label">Release date · 2026-08-30</span>
+    <span class="meta-label">·</span>
+    <span class="meta-label">Foundry VTT 14</span>
+  </div>
+</header>
+
+<div class="intro">
+  <p><strong>v6.2.1 is a focused reliability patch for the 6.2.x line.</strong></p>
+  <p>
+    It strengthens several areas that matter directly during play: combat-context resolution,
+    combat stance initialization, Actor sheet persistence, localization and visual consistency.
+    It also continues the architectural cleanup introduced in v6.2.0 by aligning more closely
+    with Foundry VTT 14 lifecycle behavior and protecting source data from Active Effect contamination.
+  </p>
+</div>
+
+<div class="theme-summary">
+  <div class="theme-card">
+    <span class="icon">⚔️</span>
+    <strong>Combat reliability</strong>
+    <p>Tokens now resolve the encounter they actually belong to, with stronger stance initialization and cleanup.</p>
+  </div>
+  <div class="theme-card">
+    <span class="icon">◆</span>
+    <strong>Data integrity</strong>
+    <p>Sheet submissions rebase values against Actor source data before persistence.</p>
+  </div>
+  <div class="theme-card">
+    <span class="icon">🌍</span>
+    <strong>Localization</strong>
+    <p>Weapon groups, language names, Spanish content and French regression coverage were improved.</p>
+  </div>
+  <div class="theme-card">
+    <span class="icon">🖥️</span>
+    <strong>Sheet polish</strong>
+    <p>Resource terminology, layouts, separators and editor presentation received targeted refinements.</p>
+  </div>
+</div>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>⚔️ Combat reliability</h2>
+  <p>
+    The main gameplay-facing fix in v6.2.1 is a more explicit relationship between a token
+    and the encounter it actually belongs to.
+  </p>
+  <ul>
+    <li>Combat context is resolved from the owning <strong>TokenDocument</strong>, not from whichever encounter happens to be displayed.</li>
+    <li>Token HUD actions remain correct when a different encounter is currently viewed.</li>
+    <li>HUD elevation rendering is preserved.</li>
+    <li>Cleanup behavior remains safe when multiple encounters are involved.</li>
+    <li>Character tokens added to combat through the HUD now have regression coverage ensuring a valid TOR2E stance is initialized.</li>
+    <li>The custom token-layer combat toggle was removed in favor of a simpler Foundry VTT 14 lifecycle path.</li>
+  </ul>
+</section>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>◆ Safer Actor sheet persistence</h2>
+  <p>
+    v6.2.1 further hardens the separation between <strong>effective values shown on a sheet</strong>
+    and the <strong>source values stored on the Actor</strong>.
+  </p>
+  <ul>
+    <li>Submitted sheet values are rebased against <code>_source</code> before they are persisted.</li>
+    <li>This prevents Active Effect contributions from being accidentally saved as if they were base Actor values.</li>
+    <li>Submission error reporting was improved to make unexpected Foundry form failures easier to diagnose.</li>
+    <li>Actor image persistence now has dedicated end-to-end regression coverage.</li>
+  </ul>
+  <p class="note">
+    This is primarily a data-integrity fix: the goal is that an Active Effect can change what the user sees
+    without silently changing the underlying base value when an unrelated field is edited.
+  </p>
+</section>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>🌍 Localization improvements</h2>
+  <ul>
+    <li>Weapon-group labels are localized correctly on NPC and Adversary sheets.</li>
+    <li>Catalan and Brazilian Portuguese language names were corrected in the system manifest.</li>
+    <li>Spanish translations received a broad update across several TOR2E terms and phrases.</li>
+    <li>A new French E2E regression test opens Actor and Item sheets and checks that translations render instead of raw localization keys.</li>
+  </ul>
+</section>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>🖥️ Sheet and interface polish</h2>
+  <ul>
+    <li>Character Sheet resource labels now better match TOR2E terminology, explicitly distinguishing <strong>Load / Fatigue</strong> and <strong>Shadow / Shadow Points</strong>.</li>
+    <li>Related accessibility labels and resource identifiers were updated.</li>
+    <li>Resource diamonds are aligned more consistently beneath their headings.</li>
+    <li>Character Sheet visual separators were restored.</li>
+    <li>Adversary and Lore sheet layout, dimensions and editor presentation received targeted refinements.</li>
+    <li>Several related CSS and template regressions are now covered automatically.</li>
+  </ul>
+</section>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>🧪 Regression and engineering work</h2>
+  <p>
+    A significant portion of this patch is dedicated to preventing these fixes from regressing later.
+  </p>
+  <ul>
+    <li>Combat stance E2E scenarios were expanded to cover entering combat, leaving combat and scene reloads.</li>
+    <li>Reusable Playwright fixtures now centralize scene and combat setup.</li>
+    <li>Foundry UI helpers were expanded to reduce duplicated test logic.</li>
+    <li>French localization and Actor image persistence gained dedicated E2E tests.</li>
+    <li>CSS guardrail analysis and duplicate-selector checks were strengthened.</li>
+    <li>A manual GitLab CI preview workflow was added for upcoming releases from <code>develop</code>.</li>
+  </ul>
+</section>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>Upgrade</h2>
+  <ol class="steps">
+    <li>Make sure you are running Foundry VTT 14.</li>
+    <li>Back up your world before updating.</li>
+    <li>Update TOR2E to v6.2.1 through Foundry's package manager.</li>
+    <li>Open your world and verify the sheets and combat workflows you use most often.</li>
+  </ol>
+</section>
+
+<div class="section-break"><span>✦</span></div>
+
+<section>
+  <h2>In short</h2>
+  <p>
+    v6.2.1 is not a feature-heavy release. It is a patch aimed at making the 6.2.x line safer:
+    more predictable combat behavior, cleaner Actor data persistence, better localization,
+    and stronger automated protection around the workflows that changed.
+  </p>
+</section>
+
+</div>
+</body>
+</html>
